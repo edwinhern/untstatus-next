@@ -1,7 +1,16 @@
 import React from "react";
 import Link from "next/Link";
 
-export const WorkContainer: React.FC = ({ children }) => (
+interface Props {
+  children: React.ReactNode
+}
+
+interface Props1 {
+  progress: number;
+  children: React.ReactNode
+}
+
+export const WorkContainer: React.FC<Props> = ({ children }) => (
   <div className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen">
     {children}
   </div>
@@ -14,7 +23,8 @@ export const WorkBackground: React.FC = () => (
   </div>
 );
 
-export const WorkLeft: React.FC<{ progress: number }> = ({
+
+export const WorkLeft: React.FC<Props1> = ({
   children,
   progress,
 }) => {
@@ -32,7 +42,7 @@ export const WorkLeft: React.FC<{ progress: number }> = ({
   );
 };
 
-export const WorkRight: React.FC<{ progress: number }> = ({
+export const WorkRight: React.FC<Props1> = ({
   children,
   progress,
 }) => {
@@ -53,7 +63,9 @@ export const WorkRight: React.FC<{ progress: number }> = ({
 
 interface LinkProps {
   href: string;
+  children?: React.ReactNode
 }
+
 export const WorkLink: React.FC<LinkProps> = ({ href, children }) => (
   <Link href={href}>
     <a

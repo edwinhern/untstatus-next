@@ -4,11 +4,15 @@ interface ScrolValue {
   innerWidth: number;
 }
 
+interface Props {
+  children?: React.ReactNode
+}
+
 export const SizeContext = React.createContext<ScrolValue>({
   innerWidth: 0,
 });
 
-const SizeObserver: React.FC = ({ children }) => {
+const SizeObserver: React.FC<Props> = ({ children }) => {
   const [innerWidth, setInnerWidth] = useState(0);
   const handleResize = useCallback(() => {
     setInnerWidth(window.innerWidth);
