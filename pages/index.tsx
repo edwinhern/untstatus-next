@@ -5,6 +5,8 @@ import Masthead from '../components/mashead'
 import AboutUs from '../components/aboutus'
 import Works from '../components/works'
 import Testimonials from '../components/testimonials'
+import Footer from '../components/footer'
+import ContactForm from '../components/contact-form'
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +21,8 @@ const Home: NextPage = () => {
       <AboutUs />
       <Works />
       <Testimonials />
+      <ContactForm />
+      <Footer />
     </div>
   )
 }
