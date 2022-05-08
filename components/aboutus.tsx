@@ -33,7 +33,7 @@ const AboutUs: React.FC = () => {
         ref={refContainer}
         className="font-bold container mx-auto px-10 lg:px-20 py-10 lg:py-18"
       >
-        <p className="leading-tight max-w-5xl mx-auto text-3xl md:text-5xl lg:text-6xl tracking-tight">
+        <p className="leading-tight max-w-5xl mx-auto  text-2xl sm:text-3xl md:text-5xl lg:text-6xl tracking-tight">
           <span
             className={`${s.aboutText}`}
             style={{
@@ -58,7 +58,7 @@ const AboutUs: React.FC = () => {
               opacity: opacityForBlock(progress, 2),
             }}
           >
-            Hopefully, it is useful for us <strong className="text-green-500">UNT Faculty</strong>, <strong className="text-purple-500">Staff</strong>, and <strong className="text-pink-500">Students </strong>
+            Hopefully, it is useful for us <strong className="">UNT Faculty</strong>, <strong className="">Staff</strong>, and <strong className="text-pink-500">Students </strong>
             further down the road.
           </span>
         </p>
