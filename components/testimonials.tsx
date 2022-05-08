@@ -17,22 +17,28 @@ const Testimonials: React.FC = () => (
     </CarouselItem>
     <CarouselItem index={1}>
       <Review by="Malcolm Morton">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+      The design and user experience is amazing!
+      I had no issues navigating to the features section for Canvas. 
+      Would definitly use this site for upcoming stats.
       </Review>
     </CarouselItem>
     <CarouselItem index={2}>
       <Review by="Natalie Tang">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+      Provides real-time updates that help me stay up to date. 
+      Saves me time from calling Student Helpdesk at UNT.
       </Review>
     </CarouselItem>
     <CarouselItem index={3}>
       <Review by="Henry Posada">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+        Eliminates the inconvience of calling UNT Helpdesk or 
+        searching for updated information. Would promote to UNT.
       </Review>
     </CarouselItem>
     <CarouselItem index={4}>
       <Review by="Bryce Hasty">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+        UNT should buy this product. It is amazing!
+        Never had any issues when communicating with Edwin throuhg the 
+        contact form.
       </Review>
     </CarouselItem>
   </Carousel>

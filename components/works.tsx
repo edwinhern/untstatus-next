@@ -32,7 +32,7 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Put Canvas Data Here!</div>
+              <div className="text-black text-3xl">Canvas Data coming soon...</div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -50,7 +50,7 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Put Lockdown Data Here!</div>
+              <div className="text-black text-3xl">Lockdown Data coming soon...</div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -68,7 +68,7 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Put Turnitin Data Here!</div>
+              <div className="text-black text-3xl">Turnitin Data coming soon...</div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -85,7 +85,7 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Put Zoom Data Here!</div>
+              <div className="text-black text-3xl">Zoom Data coming soon...</div>
             </WorkRight>
           </WorkContainer>
         )}

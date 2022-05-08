@@ -48,7 +48,8 @@ const Masthead: React.FC = () => {
             ${imageLoaded ? "opacity-100" : "opacity-0"}`}
       >
         <Image
-          src="/assets/logos/logo-50.svg"
+          src="/assets/logos/logo-100.svg"
+          // src="/assets/logos/test.png"
           width={128 / 3}
           height={114 / 3}
           alt="logo"
@@ -56,7 +57,7 @@ const Masthead: React.FC = () => {
         />
       </div>
       <div className="p-12 font-bold z-10 text-white text-center flex-1 flex items-center justify-center flex-col">
-        <h1 className="mb-6 uppercase text-4xl xl:text-5xl">untStatus</h1>
+        <h1 className="mb-6 uppercase text-4xl xl:text-5xl">unt<a className="font-thin">Status</a></h1>
         <h2 className="mb-2 text-2xl xl:text-3xl tracking-tight">
           <span>Web Development,</span> <span>done right.</span>
         </h2>
