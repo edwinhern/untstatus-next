@@ -1,6 +1,7 @@
 import React, { useRef, useContext, useState, useCallback } from "react";
 import { ScrollContext } from "../utils/scroll-observer";
 import { motion } from 'framer-motion';
+
 const easing = [.6, -.05, .01, .99]
 
 const fadeInUp = {
@@ -25,7 +26,6 @@ const stagger = {
     }
   }
 }
-
 
 const Masthead: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(true);

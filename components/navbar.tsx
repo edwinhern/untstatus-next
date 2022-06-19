@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from 'next/link';
 
-
 const Navbar: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center top-0">
