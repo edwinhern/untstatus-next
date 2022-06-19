@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
+import Head from "next/head";
 
 const easing = [.6, -.05, .01, .99]
 
@@ -47,6 +48,11 @@ const lockdownPage: React.FC = () => {
   return (
     <>
       <Navbar />
+      <Head>
+        <title>Lockdown Status</title>
+        <meta name="description" content="Made for the people, UNT." />
+        <link rel="icon" href="/assets/logos/logo-100.svg" />
+      </Head>
       {/* Work Container */}
       <motion.div variants={stagger}
       animate="animate" initial="inital"
