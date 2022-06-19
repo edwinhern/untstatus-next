@@ -30,7 +30,7 @@ const AboutUs: React.FC = () => {
         ref={refContainer}
         className="tracking-normal font-bold container mx-auto px-10 lg:px-20 py-10 lg:py-20"
       >
-        <p className="leading-snug mb-10 max-w-5xl mx-auto my-auto text-[25px] sm:text-[40px] md:text-[50px] lg:text-[60px]">
+        <p className="leading-snug mb-10 max-w-5xl mx-auto my-auto text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px]">
           <span
             className={`${s.aboutText}`}
             style={{
