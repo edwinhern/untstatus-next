@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
+import Head from "next/head";
 
 const easing = [.6, -.05, .01, .99]
 
@@ -44,11 +45,17 @@ const stagger = {
 
 const canvasPage: React.FC = () => {
   return (
+    
     <motion.div variants={stagger}
     animate="animate" initial="inital"
     exit={{ opacity: 0 }}>
     <>
       <Navbar />
+      <Head>
+        <title>Canvas Status</title>
+        <meta name="description" content="Made for the people, UNT." />
+        <link rel="icon" href="/assets/logos/logo-100.svg" />
+      </Head>
       {/* Work Container */}
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
         {/* Work Left */}
