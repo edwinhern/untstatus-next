@@ -1,9 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { checkout } from "./checkout";
 import Link from 'next/link';
-
-
 
 const Navbar: React.FC = () => {
   return (
