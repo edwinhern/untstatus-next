@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <div className="min-h-full flex gap-20 items-center justify-center bg-black text-white p-10">
+    <div className="min-h-full flex gap-20 items-center justify-center bg-black text-white pt-10 pb-5">
       <a href="https://github.com/edwinhern">
         <svg
           className="mx-2 w-6 h-6"
