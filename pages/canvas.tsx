@@ -43,9 +43,47 @@ const stagger = {
   }
 }
 
+const easing = [.6, -.05, .01, .99]
+
+const fadeInUp = {
+  inital: {
+    y:100,
+    opacity: 0,
+  },
+  animate: {
+    y:0,
+    opacity: 1,
+    transition: {
+      duration: .6,
+      ease: easing,
+    }
+  }
+}
+const fadeInDown = {
+  inital: {
+    y:-100,
+    opacity: 0,
+  },
+  animate: {
+    y:0,
+    opacity: 1,
+    transition: {
+      duration: .6,
+      ease: easing,
+    }
+  }
+}
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
+
 const canvasPage: React.FC = () => {
   return (
-    
     <motion.div variants={stagger}
     animate="animate" initial="inital"
     exit={{ opacity: 0 }}>
