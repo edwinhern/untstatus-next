@@ -23,7 +23,7 @@ const Works = () => (
         renderContent={({ progress }) => (
           <WorkContainer>
             <WorkLeft progress={progress}>
-              <div>We brought </div>
+              <div id='canvas'>We brought </div>
               <div className="text-4xl md:text-5xl font-semibold tracking-tight">
                 <WorkLink href="https://statushistory.instructure.com/unt.instructure.com">
                   Canvas
@@ -42,7 +42,7 @@ const Works = () => (
         renderContent={({ progress }) => (
           <WorkContainer>
             <WorkLeft progress={progress}>
-              <div className="text-4xl md:text-5xl font-semibold tracking-tight">
+              <div id='lockdown' className="text-4xl md:text-5xl font-semibold tracking-tight">
                 <WorkLink href="https://status.respondus.com/">
                   Lockdown
                 </WorkLink>{" "}
@@ -60,7 +60,7 @@ const Works = () => (
         renderContent={({ progress }) => (
           <WorkContainer>
             <WorkLeft progress={progress}>
-              <div className="text-4xl md:text-5xl font-semibold tracking-tight">
+              <div id='turnitin' className="text-4xl md:text-5xl font-semibold tracking-tight">
                 <WorkLink href="https://turnitin.statuspage.io/">
                   Turnitin
                 </WorkLink>{" "}
@@ -78,7 +78,7 @@ const Works = () => (
         renderContent={({ progress }) => (
           <WorkContainer>
             <WorkLeft progress={progress}>
-              <div>And last...</div>
+              <div id='zoom'>And last...</div>
               <div className="text-4xl md:text-5xl font-semibold tracking-tight">
                 <WorkLink href="https://status.zoom.us/">Zoom</WorkLink>{" "}
                 Integration
@@ -93,5 +93,8 @@ const Works = () => (
     </TileContent>
   </TileWrapper>
 );
+
+// When Canvas button is clicked, needs to scroll to specific page and specific progress value
+// Ex: Once Canvas clicked, load page: 0 and progress value: 0.5
 
 export default Works;
