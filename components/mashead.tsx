@@ -1,6 +1,5 @@
 import React, { useRef, useContext, useState, useCallback } from "react";
 import { ScrollContext } from "../utils/scroll-observer";
-import Image from "next/image";
 
 const Masthead: React.FC = () => {
   const [imageLoaded, setImageLoaded] = useState(true);
@@ -43,19 +42,6 @@ const Masthead: React.FC = () => {
         />
       </video>
 
-      <div
-        className={`flex-grow-0 pt-10 transition-all duration-1000
-            ${imageLoaded ? "opacity-100" : "opacity-0"}`}
-      >
-        <Image
-          src="/assets/logos/logo-100.svg"
-          // src="/assets/logos/test.png"
-          width={128 / 3}
-          height={114 / 3}
-          alt="logo"
-          onLoad={handleImageLoaded}
-        />
-      </div>
       <div className="p-12 font-bold z-10 text-white text-center flex-1 flex items-center justify-center flex-col">
         <h1 className="mb-6 uppercase text-4xl xl:text-5xl">unt<a className="font-thin">Status</a></h1>
         <h2 className="mb-2 text-2xl xl:text-3xl tracking-tight">
@@ -63,7 +49,7 @@ const Masthead: React.FC = () => {
         </h2>
       </div>
       <div
-        className={`animate-bounce flex-grow-0 pb-20 md:pb-10 transition-all duration-1000 z-10
+        className={`animate-bounce flex-grow-0 pb-[100px] md:pb-20 transition-all duration-1000 z-10
             ${imageLoaded ? "opacity-100" : "opacity-0"}`}
       >
         <img
