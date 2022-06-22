@@ -1,12 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import s from "../styles/dotAnimation.module.css";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
 import Head from "next/head";
 import fetch from 'isomorphic-unfetch';
 import dateFormat from 'dateformat';
-import { ClientRequest } from "http";
+import { HalfCircleSpinner } from 'react-epic-spinners';
 const easing = [.6, -.05, .01, .99]
 
 const fadeInUp = {
@@ -46,47 +45,6 @@ const stagger = {
   }
 }
 
-const loadingContainer = {
-  width: "4rem",
-  height: "4rem",
-  display: "flex",
-  justifyContent: "space-around",
-};
-const loadingCircle = {
-  display: "block",
-  width: "1rem",
-  height: "1rem",
-  backgroundColor: "green",
-  borderRadius: "0.5rem",
-};
-
-const loadingContainerVariants = {
-  start: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-  end: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const loadingCircleVariants = {
-  start: {
-    y: "0%",
-  },
-  end: {
-    y: "60%",
-  },
-};
-const loadingCircleTransition = {
-  duration : 0.4,
-  yoyo : Infinity,
-  ease: 'easeInOut'
-}
-
 const canvasPage = (props) => {
   console.log(props)
   return (
@@ -116,47 +74,15 @@ const canvasPage = (props) => {
         </motion.div> {/* Work Left */}
         {/* Work Right */}
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
-          <motion.div variants={fadeInDown} className="text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-            
+          <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             {/* Function: Progress bar
             <div className="mb-1 text-base font-medium text-green-700">Green</div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <div className="bg-green-600 h-2.5 rounded-full" style={{width: 450}}></div>
             </div> */}
-
-
-            {/* dot animation */}
-            {/* <div className={`${s.dotContainer}`}>
-              <div className={`${s.dot} ${s.dot1}`}></div>
-              <div className={`${s.dot} ${s.dot2}`}></div>
-              <div className={`${s.dot} ${s.dot3}`}></div>
-            </div> */}
-
-<motion.div
-  className="flex flex-1 items-center justify-between "
-          style={loadingContainer}
-          variants={loadingContainerVariants}
-          initial="start"
-          animate="end"
-        >
-          <motion.span
-            style={loadingCircle}
-            variants={loadingCircleVariants}
-            transition={loadingCircleTransition}
-          ></motion.span>
-          <motion.span
-            style={loadingCircle}
-            variants={loadingCircleVariants}
-            transition={loadingCircleTransition}
-          ></motion.span>
-          <motion.span
-            style={loadingCircle}
-            variants={loadingCircleVariants}
-            transition={loadingCircleTransition}
-          ></motion.span>
-        </motion.div>
-
-
+            <div className="flex flex-1 justify-center pb-10 h-[100px]">
+              <HalfCircleSpinner className="bg-gray-100" color="green"></HalfCircleSpinner>
+            </div>
             <p>Status: {props.statusDescription}</p>
             {dateFormat(props.pageUpdated, "dddd, mmmm dS, yyyy")}
           </motion.div>
@@ -166,6 +92,21 @@ const canvasPage = (props) => {
     </motion.div>
   );
 };
+
+function customCssColor(status: any) {
+  if(status == "none") {
+    return "green"
+  }
+  else if(status == "minor") {
+    return "orange"
+  }
+  else if(status == "danger") {
+    return "red"
+  }
+  else { 
+      return "purple"
+  }
+}
 
 canvasPage.getInitialProps = async () => {
   let apiData = await fetch(`https://status.instructure.com/api/v2/status.json`);
