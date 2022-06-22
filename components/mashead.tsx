@@ -47,7 +47,7 @@ const Masthead: React.FC = () => {
     <motion.div variants={stagger} 
     animate={{ opacity:1}} initial={{ opacity:0}} transition={{delay: .2}}
       ref={refContainer}
-      className="min-h-screen flex flex-col items-center justify-center sticky top-0 -z-10"
+      className="min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center sticky top-0 -z-10"
       style={{
         transform: `translateY(=${progress * 20}vh)`,
       }}
@@ -57,7 +57,7 @@ const Masthead: React.FC = () => {
         loop
         muted
         playsInline
-        className="absolute w-screen h-screen object-cover saturate-150"
+        className="absolute w-screen min-h-[90vh] md:h-screen object-cover saturate-150"
       >
         <source
           src="/assets/background/bg-video.mp4"
@@ -76,16 +76,18 @@ const Masthead: React.FC = () => {
         </h2>
       </motion.div>
       <motion.div variants={fadeInUp}
-        className={`animate-bounce flex-grow-0 pb-[100px] md:pb-20 transition-all duration-1000 z-10
+        className={`animate-bounce flex-grow-0 pb-[90px] md:pb-20 transition-all duration-1000 z-10
             ${imageLoaded ? "opacity-100" : "opacity-0"}`}
       >
-        <img
-          src="/assets/background/arrow.png"
-          width={188 / 3}
-          height={105 / 3}
-          alt="scroll down"
-          onLoad={handleImageLoaded}
-        />
+        <div >
+          <img
+            src="/assets/background/arrow.png"
+            width={188 / 3}
+            height={105 / 3}
+            alt="scroll down"
+            onLoad={handleImageLoaded}
+          />
+        </div>
       </motion.div>
     </motion.div>
   );

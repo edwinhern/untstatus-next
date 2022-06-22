@@ -94,7 +94,4 @@ const Works = () => (
   </TileWrapper>
 );
 
-// When Canvas button is clicked, needs to scroll to specific page and specific progress value
-// Ex: Once Canvas clicked, load page: 0 and progress value: 0.5
-
 export default Works;
