@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
 import Head from "next/head";
+import { HalfCircleSpinner } from "react-epic-spinners";
+import dateFormat from "dateformat";
 
 const easing = [.6, -.05, .01, .99]
 
@@ -45,6 +47,30 @@ const stagger = {
 }
 
 const lockdownPage: React.FC = () => {
+  // Stores and sets Data
+  const [RespondusStatus, setRespondusStatus] = useState();
+  const [RespondusIndicator, setRespondusIndicator] = useState();
+  const [RespondusDescription, setRespondusDescription] = useState();
+
+  // Executes function when page loads
+  useEffect( () => {
+      const fetchData = async () => {
+          // Fetches the info
+          const res = await fetch("/api/respondusRequest", {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+          });
+
+          const respondusData = await res.json();
+          setRespondusStatus(respondusData.pageUpdated);
+          setRespondusIndicator(respondusData.statusIndicator);
+          setRespondusDescription(respondusData.statusDescription)
+      }
+      fetchData();
+  }, []);
+  
   return (
     <>
       <Navbar />
@@ -71,9 +97,13 @@ const lockdownPage: React.FC = () => {
           </span>
         </motion.div> {/* Work Left */}
         {/* Work Right */}
-        <div  className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
-          <motion.div variants={fadeInDown} className="text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-          Lockdown Data coming soon...
+        <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
+          <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+            <div className="flex flex-1 justify-center pb-10 h-[100px]">
+              <HalfCircleSpinner className="bg-gray-100" color="green"></HalfCircleSpinner>
+            </div>
+            <p>Status: {RespondusDescription}</p>
+            {dateFormat(RespondusStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </motion.div> {/* Work Container */}

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
 import Head from "next/head";
+import dateFormat from "dateformat";
+import { HalfCircleSpinner } from "react-epic-spinners";
 
 const easing = [.6, -.05, .01, .99]
 
@@ -46,6 +48,31 @@ const stagger = {
 
 
 const turnitinPage: React.FC = () => {
+   // Stores and sets Data
+   const [turnitinStatus, setTurnitinStatus] = useState();
+   const [turnitinIndicator, setTurnitinIndicator] = useState();
+   const [turnitinDescription, setTurnitinDescription] = useState();
+ 
+   // Executes function when page loads
+   useEffect( () => {
+       const fetchData = async () => {
+           // Fetches the info
+           const res = await fetch("/api/turnitinRequest", {
+               method: "GET",
+               headers: {
+                   "Content-Type": "application/json"
+               },
+           });
+ 
+           const turnitin = await res.json();
+
+           setTurnitinStatus(turnitin.pageUpdated);
+           setTurnitinIndicator(turnitin.statusIndicator);
+           setTurnitinDescription(turnitin.statusDescription)
+       }
+       fetchData();
+   }, []);
+   
   return (
     <>
       <Navbar />
@@ -73,8 +100,12 @@ const turnitinPage: React.FC = () => {
         </motion.div> {/* Work Left */}
         {/* Work Right */}
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
-          <motion.div variants={fadeInDown} className="text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-          Turnitin Data coming soon...
+          <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+            <div className="flex flex-1 justify-center pb-10 h-[100px]">
+              <HalfCircleSpinner className="bg-gray-100" color="green"></HalfCircleSpinner>
+            </div>
+            <p>Status: {turnitinDescription}</p>
+            {dateFormat(turnitinStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </motion.div> {/* Work Container */}

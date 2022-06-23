@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Tile, TileBackground, TileContent, TileWrapper } from "./tile";
 import {
   WorkBackground,
@@ -8,7 +8,9 @@ import {
   WorkRight,
 } from "./work";
 
+
 const Works = () => (
+  
   <TileWrapper numOfPages={4}>
     <TileBackground page={0} renderContent={function (props: { progress: number; }) {
       throw new Error("Function not implemented.");
@@ -92,6 +94,7 @@ const Works = () => (
       ></Tile>
     </TileContent>
   </TileWrapper>
+
 );
 
 export default Works;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
@@ -45,8 +45,32 @@ const stagger = {
   }
 }
 
-const canvasPage = (props) => {
-  console.log(props)
+const canvasPage = () => {
+  // Stores and sets Data
+  const [canvasStatus, setCanvasStatus] = useState();
+  const [canvasIndicator, setCanvasIndicator] = useState();
+  const [canvasDescription, setCanvasDescription] = useState();
+
+  // Executes function when page loads
+  useEffect( () => {
+      const fetchData = async () => {
+          // Fetches the info
+          const res = await fetch("/api/canvasRequest", {
+              method: "GET",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+          });
+
+          const canvasData = await res.json();
+          console.log(canvasData)
+          setCanvasStatus(canvasData.pageUpdated);
+          setCanvasIndicator(canvasData.statusIndicator);
+          setCanvasDescription(canvasData.statusDescription)
+      }
+      fetchData();
+  }, []);
+
   return (
     <motion.div variants={stagger}
     animate="animate" initial="inital"
@@ -75,16 +99,11 @@ const canvasPage = (props) => {
         {/* Work Right */}
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-            {/* Function: Progress bar
-            <div className="mb-1 text-base font-medium text-green-700">Green</div>
-            <div className="w-full bg-gray-200 rounded-full h-2.5">
-              <div className="bg-green-600 h-2.5 rounded-full" style={{width: 450}}></div>
-            </div> */}
             <div className="flex flex-1 justify-center pb-10 h-[100px]">
               <HalfCircleSpinner className="bg-gray-100" color="green"></HalfCircleSpinner>
             </div>
-            <p>Status: {props.statusDescription}</p>
-            {dateFormat(props.pageUpdated, "dddd, mmmm dS, yyyy")}
+            <p>Status: {canvasDescription}</p>
+            {dateFormat(canvasStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </div> {/* Work Container */}
@@ -93,6 +112,7 @@ const canvasPage = (props) => {
   );
 };
 
+// Broken: Implement to change color on animation wheel
 function customCssColor(status: any) {
   if(status == "none") {
     return "green"
@@ -107,17 +127,5 @@ function customCssColor(status: any) {
       return "purple"
   }
 }
-
-canvasPage.getInitialProps = async () => {
-  let apiData = await fetch(`https://status.instructure.com/api/v2/status.json`);
-  apiData = await apiData.json();
-  
-  return {
-    pageUpdated: apiData["page"].updated_at,
-    statusIndicator: apiData.status["indicator"],
-    statusDescription: apiData.status["description"],
-  }
-};
-
 
 export default canvasPage;
