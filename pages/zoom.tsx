@@ -64,7 +64,6 @@ const zoomPage: React.FC = () => {
           });
 
           const zoom = await res.json();
-
           setZoomStatus(zoom.pageUpdated);
           setZoomIndicator(zoom.statusIndicator);
           setZoomDescription(zoom.statusDescription)
