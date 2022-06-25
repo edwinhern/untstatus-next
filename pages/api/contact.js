@@ -16,8 +16,8 @@ export default async (req, res) => {
 
     // format data based on how sendgrid takes in required info
     const data = {
-        to: 'edwinhern.16@gmail.com',
-        from: 'edwinhern.16@gmail.com',
+        to: process.env.CONTACT_EMAIL,
+        from: process.env.CONTACT_EMAIL,
         subject: `New message from ${body.name}`,
         text: message,
         html: message.replace(/\r\n/g, '<br />'),

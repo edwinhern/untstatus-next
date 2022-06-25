@@ -63,7 +63,6 @@ const canvasPage = () => {
           });
 
           const canvasData = await res.json();
-          console.log(canvasData)
           setCanvasStatus(canvasData.pageUpdated);
           setCanvasIndicator(canvasData.statusIndicator);
           setCanvasDescription(canvasData.statusDescription)
