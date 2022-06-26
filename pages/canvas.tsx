@@ -5,7 +5,7 @@ import {WorkLink} from "../components/work";
 import Head from "next/head";
 import fetch from 'isomorphic-unfetch';
 import dateFormat from 'dateformat';
-import { HalfCircleSpinner } from 'react-epic-spinners';
+import { FingerprintSpinner } from 'react-epic-spinners';
 const easing = [.6, -.05, .01, .99]
 
 const fadeInUp = {
@@ -50,9 +50,10 @@ const canvasPage = () => {
   const [canvasStatus, setCanvasStatus] = useState();
   const [canvasDescription, setCanvasDescription] = useState();
   const [canvasIndicator, setCanvasIndicator] = useState();
-
+  const [isLoading, setIsLoading] = useState(false);
   // Executes function when page loads
   useEffect( () => {
+      setIsLoading(true);
       const fetchData = async () => {
           // Fetches the info
           const res = await fetch("/api/canvasRequest", {
@@ -68,7 +69,10 @@ const canvasPage = () => {
           setCanvasDescription(canvasData.statusDescription);
       }
       fetchData();
+      setIsLoading(false);
   }, []);
+
+  if(isLoading) return <p>Loading...</p>;
 
   return (
     <motion.div variants={stagger}
@@ -98,8 +102,8 @@ const canvasPage = () => {
         {/* Work Right */}
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-            <div className="flex flex-1 justify-center pb-10 h-[100px]">
-              <HalfCircleSpinner className="bg-gray-100" color={`${canvasIndicator}`}></HalfCircleSpinner>
+            <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
+              <FingerprintSpinner size={95} color={`${canvasIndicator}`}></FingerprintSpinner>
             </div>
             <p>Status: {canvasDescription}</p>
             {dateFormat(canvasStatus, "dddd, mmmm dS, yyyy")}
