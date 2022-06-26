@@ -1,5 +1,5 @@
 import React from "react";
-
+import customCss from "../api/cssFunction";
 
 export default async (req, res) => {
     // Calls the http request (GET Request)
@@ -11,7 +11,7 @@ export default async (req, res) => {
     res.status(200).json({ 
         status: 'OK',
         pageUpdated: apiData["page"].updated_at,
-        statusIndicator: apiData.status["indicator"],
         statusDescription: apiData.status["description"],
+        colorIndicator: customCss(apiData.status["indicator"]),
     });
 };

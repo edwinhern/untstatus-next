@@ -67,7 +67,7 @@ const turnitinPage: React.FC = () => {
            const turnitin = await res.json();
 
            setTurnitinStatus(turnitin.pageUpdated);
-           setTurnitinIndicator(turnitin.statusIndicator);
+           setTurnitinIndicator(turnitin.colorIndicator);
            setTurnitinDescription(turnitin.statusDescription)
        }
        fetchData();
@@ -102,7 +102,7 @@ const turnitinPage: React.FC = () => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center pb-10 h-[100px]">
-              <HalfCircleSpinner className="bg-gray-100" color="green"></HalfCircleSpinner>
+              <HalfCircleSpinner className="bg-gray-100" color={`${turnitinIndicator}`}></HalfCircleSpinner>
             </div>
             <p>Status: {turnitinDescription}</p>
             {dateFormat(turnitinStatus, "dddd, mmmm dS, yyyy")}
