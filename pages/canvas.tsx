@@ -50,10 +50,8 @@ const canvasPage = () => {
   const [canvasStatus, setCanvasStatus] = useState();
   const [canvasDescription, setCanvasDescription] = useState();
   const [canvasIndicator, setCanvasIndicator] = useState();
-  const [isLoading, setIsLoading] = useState(false);
   // Executes function when page loads
   useEffect( () => {
-      setIsLoading(true);
       const fetchData = async () => {
           // Fetches the info
           const res = await fetch("/api/canvasRequest", {
@@ -69,10 +67,8 @@ const canvasPage = () => {
           setCanvasDescription(canvasData.statusDescription);
       }
       fetchData();
-      setIsLoading(false);
   }, []);
 
-  if(isLoading) return <p>Loading...</p>;
 
   return (
     <motion.div variants={stagger}
