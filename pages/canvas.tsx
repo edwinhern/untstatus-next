@@ -50,6 +50,7 @@ const canvasPage = () => {
   const [canvasStatus, setCanvasStatus] = useState();
   const [canvasDescription, setCanvasDescription] = useState();
   const [canvasIndicator, setCanvasIndicator] = useState();
+  
   // Executes function when page loads
   useEffect( () => {
       const fetchData = async () => {
