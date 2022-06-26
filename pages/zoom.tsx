@@ -65,7 +65,7 @@ const zoomPage: React.FC = () => {
 
           const zoom = await res.json();
           setZoomStatus(zoom.pageUpdated);
-          setZoomIndicator(zoom.statusIndicator);
+          setZoomIndicator(zoom.colorIndicator);
           setZoomDescription(zoom.statusDescription)
       }
       fetchData();
@@ -101,7 +101,7 @@ const zoomPage: React.FC = () => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center pb-10 h-[100px]">
-              <HalfCircleSpinner className="bg-gray-100" color="green"></HalfCircleSpinner>
+              <HalfCircleSpinner className="bg-gray-100" color={`${zoomIndicator}`}></HalfCircleSpinner>
             </div>
             <p>Status: {zoomDescription}</p>
             {dateFormat(zoomStatus, "dddd, mmmm dS, yyyy")}

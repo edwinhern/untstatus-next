@@ -48,8 +48,8 @@ const stagger = {
 const canvasPage = () => {
   // Stores and sets Data
   const [canvasStatus, setCanvasStatus] = useState();
-  const [canvasIndicator, setCanvasIndicator] = useState();
   const [canvasDescription, setCanvasDescription] = useState();
+  const [canvasIndicator, setCanvasIndicator] = useState();
 
   // Executes function when page loads
   useEffect( () => {
@@ -64,8 +64,8 @@ const canvasPage = () => {
 
           const canvasData = await res.json();
           setCanvasStatus(canvasData.pageUpdated);
-          setCanvasIndicator(canvasData.statusIndicator);
-          setCanvasDescription(canvasData.statusDescription)
+          setCanvasIndicator(canvasData.colorIndicator);
+          setCanvasDescription(canvasData.statusDescription);
       }
       fetchData();
   }, []);
@@ -99,7 +99,7 @@ const canvasPage = () => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center pb-10 h-[100px]">
-              <HalfCircleSpinner className="bg-gray-100" color="green"></HalfCircleSpinner>
+              <HalfCircleSpinner className="bg-gray-100" color={`${canvasIndicator}`}></HalfCircleSpinner>
             </div>
             <p>Status: {canvasDescription}</p>
             {dateFormat(canvasStatus, "dddd, mmmm dS, yyyy")}
@@ -110,21 +110,5 @@ const canvasPage = () => {
     </motion.div>
   );
 };
-
-// Broken: Implement to change color on animation wheel
-function customCssColor(status: any) {
-  if(status == "none") {
-    return "green"
-  }
-  else if(status == "minor") {
-    return "orange"
-  }
-  else if(status == "danger") {
-    return "red"
-  }
-  else { 
-      return "purple"
-  }
-}
 
 export default canvasPage;
