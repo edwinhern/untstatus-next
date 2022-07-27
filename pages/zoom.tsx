@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
 import Head from "next/head";
 import dateFormat from "dateformat";
-import { FingerprintSpinner, HalfCircleSpinner } from "react-epic-spinners";
+import { FingerprintSpinner } from "react-epic-spinners";
+import customCss from "../lib/cssFunction";
 
 const easing = [.6, -.05, .01, .99]
 
@@ -46,32 +47,7 @@ const stagger = {
   }
 }
 
-const zoomPage: React.FC = () => {
-  // Stores and sets Data
-  const [zoomStatus, setZoomStatus] = useState();
-  const [zoomIndicator, setZoomIndicator] = useState();
-  const [zoomDescription, setZoomDescription] = useState();
-
-  // Executes function when page loads
-  useEffect( () => {
-      const fetchData = async () => {
-          // Fetches the info
-          const res = await fetch("/api/zoomRequest", {
-              method: "GET",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-          });
-
-          const zoom = await res.json();
-          setZoomStatus(zoom.pageUpdated);
-          setZoomIndicator(zoom.colorIndicator);
-          setZoomDescription(zoom.statusDescription)
-      }
-      fetchData();
-  }, []);
-
-
+const zoomPage = (props) => {
   return (
     <>
       <Navbar />
@@ -101,15 +77,31 @@ const zoomPage: React.FC = () => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-              <FingerprintSpinner size={95} color={`${zoomIndicator}`}></FingerprintSpinner>
+              <FingerprintSpinner size={95} color={`${props.zoomIndicator}`}></FingerprintSpinner>
             </div>
-            <p>Status: {zoomDescription}</p>
-            {dateFormat(zoomStatus, "dddd, mmmm dS, yyyy")}
+            <p>Status: {props.zoomDescription}</p>
+            {dateFormat(props.zoomStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </motion.div> {/* Work Container */}
     </>
   );
+};
+
+// Use when calling hhtp request inside a page Ex: canvas.tsx
+export async function getServerSideProps() {
+  try { 
+    let res = await fetch(`https://status.zoom.us/api/v2/status.json`);
+    let data = await res.json();
+    return { 
+      props:{
+        zoomStatus: data["page"].updated_at,
+        zoomIndicator: customCss(data.status["indicator"]),
+        zoomDescription: data.status["description"],
+      }
+     };
+  } catch(err) { console.error(err) }
+  
 };
 
 export default zoomPage;

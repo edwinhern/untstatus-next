@@ -2388,6 +2388,11 @@
   "resolved" "https://registry.npmjs.org/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz"
   "version" "2.3.0"
 
+"vanta@^0.5.22":
+  "integrity" "sha512-Y58U1SjHU6HeIuwq+te7eonyi7LWzKqyPDjZyQ7Kb6Zy4ampNJHRIUZvf1Pwl6uTC6Qi6P9fUYDsUVQDHq0KKg=="
+  "resolved" "https://registry.npmjs.org/vanta/-/vanta-0.5.22.tgz"
+  "version" "0.5.22"
+
 "webidl-conversions@^3.0.0":
   "integrity" "sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE="
   "resolved" "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-3.0.1.tgz"

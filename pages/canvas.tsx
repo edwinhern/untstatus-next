@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
@@ -6,8 +6,9 @@ import Head from "next/head";
 import fetch from 'isomorphic-unfetch';
 import dateFormat from 'dateformat';
 import { FingerprintSpinner } from 'react-epic-spinners';
-const easing = [.6, -.05, .01, .99]
+import customCss from "../lib/cssFunction";
 
+const easing = [.6, -.05, .01, .99]
 const fadeInUp = {
   inital: {
     y:100,
@@ -45,32 +46,7 @@ const stagger = {
   }
 }
 
-const canvasPage = () => {
-  // Stores and sets Data
-  const [canvasStatus, setCanvasStatus] = useState();
-  const [canvasDescription, setCanvasDescription] = useState();
-  const [canvasIndicator, setCanvasIndicator] = useState();
-  
-  // Executes function when page loads
-  useEffect( () => {
-      const fetchData = async () => {
-          // Fetches the info
-          const res = await fetch("/api/canvasRequest", {
-              method: "GET",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-          });
-
-          const canvasData = await res.json();
-          setCanvasStatus(canvasData.pageUpdated);
-          setCanvasIndicator(canvasData.colorIndicator);
-          setCanvasDescription(canvasData.statusDescription);
-      }
-      fetchData();
-  }, []);
-
-
+const canvasPage = (props) => {
   return (
     <motion.div variants={stagger}
     animate="animate" initial="inital"
@@ -83,7 +59,7 @@ const canvasPage = () => {
         <link rel="icon" href="/assets/logos/logo-100.svg" />
       </Head>
       {/* Work Container */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full  top-0 sticky">
         {/* Work Left */}
         <motion.div variants={fadeInUp} className="bg-opacity-100 saturate-100 bg-pink-500
         flex flex-col items-center justify-center h-[30vh] lg:h-auto
@@ -100,16 +76,32 @@ const canvasPage = () => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-              <FingerprintSpinner size={95} color={`${canvasIndicator}`}></FingerprintSpinner>
+              <FingerprintSpinner size={95} color={`${props.canvasIndicator}`}></FingerprintSpinner>
             </div>
-            <p>Status: {canvasDescription}</p>
-            {dateFormat(canvasStatus, "dddd, mmmm dS, yyyy")}
+            <p>Status: {props.canvasDescription}</p>
+            {dateFormat(props.canvasStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </div> {/* Work Container */}
     </>
     </motion.div>
   );
+};
+
+// Use when calling hhtp request inside a page Ex: canvas.tsx
+export async function getServerSideProps() {
+  try { 
+    let res = await fetch(`https://status.instructure.com/api/v2/status.json`);
+    let data = await res.json();
+    return { 
+      props:{
+        canvasStatus: data["page"].updated_at,
+        canvasIndicator: customCss(data.status["indicator"]),
+        canvasDescription: data.status["description"],
+      }
+     };
+  } catch(err) { console.error(err) }
+  
 };
 
 export default canvasPage;

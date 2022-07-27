@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import dateFormat from "dateformat";
+import React from "react";
+import { FingerprintSpinner } from "react-epic-spinners";
 import { Tile, TileBackground, TileContent, TileWrapper } from "./tile";
 import {
   WorkBackground,
@@ -8,9 +10,7 @@ import {
   WorkRight,
 } from "./work";
 
-
-const Works = () => (
-  
+const Works = params => (
   <TileWrapper numOfPages={4}>
     <TileBackground page={0} renderContent={function (props: { progress: number; }) {
       throw new Error("Function not implemented.");
@@ -34,7 +34,15 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Canvas Data coming soon...</div>
+              <div className="text-black text-3xl">
+                <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+                  <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
+                    <FingerprintSpinner size={95} color={`${params.data.canvas.canvasIndicator}`}></FingerprintSpinner>
+                  </div>
+                  <p>Status: {params.data.canvas.canvasDescription}</p>
+                  {dateFormat(params.data.canvas.canvasStatus, "dddd, mmmm dS, yyyy")}
+                </div>
+              </div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -52,7 +60,15 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Lockdown Data coming soon...</div>
+              <div className="text-black text-3xl">
+                <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+                    <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
+                      <FingerprintSpinner size={95} color={`${params.data.respondus.respondusIndicator}`}></FingerprintSpinner>
+                    </div>
+                    <p>Status: {params.data.respondus.respondusDescription}</p>
+                    {dateFormat(params.data.respondus.respondusStatus, "dddd, mmmm dS, yyyy")}
+                </div>
+              </div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -70,7 +86,15 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Turnitin Data coming soon...</div>
+              <div className="text-black text-3xl">
+                <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+                      <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
+                        <FingerprintSpinner size={95} color={`${params.data.turnitin.turnitinIndicator}`}></FingerprintSpinner>
+                      </div>
+                      <p>Status: {params.data.turnitin.turnitinDescription}</p>
+                      {dateFormat(params.data.turnitin.turnitinStatus, "dddd, mmmm dS, yyyy")}
+                  </div>
+              </div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -87,7 +111,15 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">Zoom Data coming soon...</div>
+              <div className="text-black text-3xl">
+                <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+                        <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
+                          <FingerprintSpinner size={95} color={`${params.data.zoom.zoomIndicator}`}></FingerprintSpinner>
+                        </div>
+                        <p>Status: {params.data.zoom.zoomDescription}</p>
+                        {dateFormat(params.data.zoom.zoomStatus, "dddd, mmmm dS, yyyy")}
+                </div>
+              </div>
             </WorkRight>
           </WorkContainer>
         )}
