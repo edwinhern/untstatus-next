@@ -7,8 +7,8 @@ import fetch from 'isomorphic-unfetch';
 import dateFormat from 'dateformat';
 import { FingerprintSpinner } from 'react-epic-spinners';
 import customCss from "../lib/cssFunction";
-const easing = [.6, -.05, .01, .99]
 
+const easing = [.6, -.05, .01, .99]
 const fadeInUp = {
   inital: {
     y:100,

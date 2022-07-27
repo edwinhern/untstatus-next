@@ -1,14 +1,9 @@
 import React from "react";
-<<<<<<< HEAD:pages/api/canvasRequest.ts
-import customCss from "../../lib/cssFunction";
-=======
-import customCss from "./cssFunction";
->>>>>>> origin/main:pages/api/turnitinRequest.tsx
+import customCss from "../api/cssFunction";
 
-// Example Will not use
 export default async (req, res) => {
     // Calls the http request (GET Request)
-    let apiData = await fetch(`https://status.instructure.com/api/v2/status.json`);
+    let apiData = await fetch(`https://status.respondus.com/api/v2/status.json`);
     //  Converts the request to a JSON format
     apiData = await apiData.json();
     
