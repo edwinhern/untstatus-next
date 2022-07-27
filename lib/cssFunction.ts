@@ -1,4 +1,3 @@
-
 // Based on the status indicator of the tool, change the animation color
 const customCss = function(statusIndicator) {
     if(statusIndicator == "none") {

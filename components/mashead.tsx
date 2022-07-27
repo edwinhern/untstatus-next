@@ -1,6 +1,8 @@
-import React, { useRef, useContext, useState, useCallback } from "react";
+import React, { useRef, useContext, useState, useCallback, useEffect } from "react";
 import { ScrollContext } from "../utils/scroll-observer";
 import { motion } from 'framer-motion';
+import BIRDS from 'vanta/dist/vanta.birds.min'
+
 
 const easing = [.6, -.05, .01, .99]
 
@@ -27,7 +29,7 @@ const stagger = {
   }
 }
 
-const Masthead: React.FC = () => {
+const Masthead = () => {
   const [imageLoaded, setImageLoaded] = useState(true);
   const refContainer = useRef<HTMLDivElement>(null);
   const { scrollY } = useContext(ScrollContext);
@@ -68,7 +70,6 @@ const Masthead: React.FC = () => {
           type="video/webm; codecs=vp9"
         />
       </video>
-
       <motion.div variants={fadeInUp} className="p-12 font-bold z-10 text-white text-center flex-1 flex items-center justify-center flex-col">
         <h1 className="mb-6 uppercase text-4xl xl:text-5xl">unt<a className="font-thin">Status</a></h1>
         <h2 className="mb-2 text-2xl xl:text-3xl tracking-tight">

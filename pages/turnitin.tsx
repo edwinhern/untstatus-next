@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
 import Head from "next/head";
 import dateFormat from "dateformat";
-import { FingerprintSpinner, HalfCircleSpinner } from "react-epic-spinners";
+import { FingerprintSpinner } from "react-epic-spinners";
+import customCss from "../lib/cssFunction";
 
 const easing = [.6, -.05, .01, .99]
 
@@ -46,33 +47,7 @@ const stagger = {
   }
 }
 
-
-const turnitinPage: React.FC = () => {
-   // Stores and sets Data
-   const [turnitinStatus, setTurnitinStatus] = useState();
-   const [turnitinIndicator, setTurnitinIndicator] = useState();
-   const [turnitinDescription, setTurnitinDescription] = useState();
- 
-   // Executes function when page loads
-   useEffect( () => {
-       const fetchData = async () => {
-           // Fetches the info
-           const res = await fetch("/api/turnitinRequest", {
-               method: "GET",
-               headers: {
-                   "Content-Type": "application/json"
-               },
-           });
- 
-           const turnitin = await res.json();
-
-           setTurnitinStatus(turnitin.pageUpdated);
-           setTurnitinIndicator(turnitin.colorIndicator);
-           setTurnitinDescription(turnitin.statusDescription)
-       }
-       fetchData();
-   }, []);
-   
+const turnitinPage = (props) => {   
   return (
     <>
       <Navbar />
@@ -84,7 +59,7 @@ const turnitinPage: React.FC = () => {
       {/* Work Container */}
       <motion.div 
       animate="animate" initial="inital"
-      exit={{ opacity: 0 }}
+      exit={{ opacity: 0 }} variants={stagger}
       className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
         {/* Work Left */}
         <motion.div variants={fadeInUp} className="bg-opacity-100 saturate-100 bg-purple-500
@@ -102,15 +77,30 @@ const turnitinPage: React.FC = () => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-              <FingerprintSpinner size={95} color={`${turnitinIndicator}`}></FingerprintSpinner>
+              <FingerprintSpinner size={95} color={`${props.turnitinIndicator}`}></FingerprintSpinner>
             </div>
-            <p>Status: {turnitinDescription}</p>
-            {dateFormat(turnitinStatus, "dddd, mmmm dS, yyyy")}
+            <p>Status: {props.turnitinDescription}</p>
+            {dateFormat(props.turnitinStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </motion.div> {/* Work Container */}
     </>
   );
+};
+
+// Use when calling hhtp request inside a page Ex: canvas.tsx
+export async function getServerSideProps() {
+  try { 
+    let res = await fetch(`https://status.instructure.com/api/v2/status.json`);
+    let data = await res.json();
+    return { 
+      props:{
+        turnitinStatus: data["page"].updated_at,
+        turnitinIndicator: customCss(data.status["indicator"]),
+        turnitinDescription: data.status["description"],
+      }
+     };
+  } catch(err) { console.error(err) }  
 };
 
 export default turnitinPage;

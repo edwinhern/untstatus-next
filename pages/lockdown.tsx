@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "../components/navbar";
 import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
 import Head from "next/head";
 import { FingerprintSpinner } from "react-epic-spinners";
 import dateFormat from "dateformat";
+import customCss from "../lib/cssFunction";
 
 const easing = [.6, -.05, .01, .99]
 
@@ -46,31 +47,7 @@ const stagger = {
   }
 }
 
-const lockdownPage: React.FC = () => {
-  // Stores and sets Data
-  const [RespondusStatus, setRespondusStatus] = useState();
-  const [RespondusIndicator, setRespondusIndicator] = useState();
-  const [RespondusDescription, setRespondusDescription] = useState();
-
-  // Executes function when page loads
-  useEffect( () => {
-      const fetchData = async () => {
-          // Fetches the info
-          const res = await fetch("/api/respondusRequest", {
-              method: "GET",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-          });
-
-          const respondusData = await res.json();
-          setRespondusStatus(respondusData.pageUpdated);
-          setRespondusIndicator(respondusData.colorIndicator);
-          setRespondusDescription(respondusData.statusDescription)
-      }
-      fetchData();
-  }, []);
-  
+const lockdownPage = (props) => {
   return (
     <>
       <Navbar />
@@ -100,15 +77,31 @@ const lockdownPage: React.FC = () => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-              <FingerprintSpinner size={95} color={`${RespondusIndicator}`}></FingerprintSpinner>
+              <FingerprintSpinner size={95} color={`${props.respondusIndicator}`}></FingerprintSpinner>
             </div>
-            <p>Status: {RespondusDescription}</p>
-            {dateFormat(RespondusStatus, "dddd, mmmm dS, yyyy")}
+            <p>Status: {props.respondusDescription}</p>
+            {dateFormat(props.respondusStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </motion.div> {/* Work Container */}
     </>
   );
+};
+
+// Use when calling hhtp request inside a page Ex: canvas.tsx
+export async function getServerSideProps() {
+  try { 
+    let res = await fetch(`https://status.respondus.com/api/v2/status.json`);
+    let data = await res.json();
+    return { 
+      props:{
+        respondusStatus: data["page"].updated_at,
+        respondusIndicator: customCss(data.status["indicator"]),
+        respondusDescription: data.status["description"],
+      }
+     };
+  } catch(err) { console.error(err) }
+  
 };
 
 export default lockdownPage;
