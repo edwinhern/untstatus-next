@@ -7,6 +7,7 @@ import fetch from 'isomorphic-unfetch';
 import dateFormat from 'dateformat';
 import { FingerprintSpinner } from 'react-epic-spinners';
 import customCss from "../lib/cssFunction";
+import s from "../styles/animation.module.css";
 
 const easing = [.6, -.05, .01, .99]
 const fadeInUp = {
@@ -76,10 +77,15 @@ const canvasPage = (props) => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-              <FingerprintSpinner size={95} color={`${props.canvasIndicator}`}></FingerprintSpinner>
+              {/* <div className={`${s.loader} `} style={{
+                background: `${props.canvasIndicator}`,
+                color: `${props.canvasIndicator}`
+              }}></div> */}
+              <div className="animate-spin mr-3 h-5 w-5 bg-sky-400 opacity-100"></div>
+              {/* <FingerprintSpinner size={95} color={`${props.canvasIndicator}`}></FingerprintSpinner> */}
             </div>
-            <p>Status: {props.canvasDescription}</p>
-            {dateFormat(props.canvasStatus, "dddd, mmmm dS, yyyy")}
+              <p>Status: {props.canvasDescription}</p>
+              {dateFormat(props.canvasStatus, "dddd, mmmm dS, yyyy")}
           </motion.div>
         </div> {/* Work Right */}
       </div> {/* Work Container */}
