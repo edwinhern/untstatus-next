@@ -1,20 +1,18 @@
 module.exports = {
-  purge: {
-    enable: process.env.NODE_ENV === 'production',
-    content: [
+  enable: process.env.NODE_ENV === "production",
+  content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    ],
-    options: {
-      safelist: [],
-    },
+  ],
+  options: {
+    safelist: [],
   },
   theme: {
     extend: {
       height: {
-        'half-screen': '50vh'
-      }
+        "half-screen": "50vh",
+      },
     },
   },
   plugins: [],
-}
+};
