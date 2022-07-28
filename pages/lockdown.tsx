@@ -89,7 +89,11 @@ const lockdownPage = (props) => {
 };
 
 // Use when calling hhtp request inside a page Ex: canvas.tsx
-export async function getServerSideProps() {
+export async function getServerSideProps({req,res}) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
   try { 
     let res = await fetch(`https://status.respondus.com/api/v2/status.json`);
     let data = await res.json();

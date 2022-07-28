@@ -51,7 +51,11 @@ const Home: NextPage = (props) => {
 };
 
 // Call API requests to receive the data
-export async function getServerSideProps() {
+export async function getServerSideProps({req, res}) {
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  )
   const canvasJson = getCanvasStatus();
   const respondusJson = getRespondusStatus();
   const turnitinJson = getTurnitinStatus();

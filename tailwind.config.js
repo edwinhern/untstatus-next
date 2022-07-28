@@ -1,13 +1,15 @@
 module.exports = {
-  content: [
+  purge: {
+    enable: process.env.NODE_ENV === 'production',
+    content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+    ],
+    options: {
+      safelist: [],
+    },
+  },
   theme: {
-    // letterSpacing: {
-    //   tight: '-.015em',
-
-    // },
     extend: {
       height: {
         'half-screen': '50vh'
