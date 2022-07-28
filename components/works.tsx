@@ -1,6 +1,6 @@
 import dateFormat from "dateformat";
 import React from "react";
-import { FingerprintSpinner, SelfBuildingSquareSpinner } from "react-epic-spinners";
+// import { FingerprintSpinner, SelfBuildingSquareSpinner } from "react-epic-spinners";
 import { Tile, TileBackground, TileContent, TileWrapper } from "./tile";
 import {
   WorkBackground,
@@ -37,7 +37,8 @@ const Works = params => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                   <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                    <SelfBuildingSquareSpinner size={70} color={`${params.data.canvas.canvasIndicator}`}></SelfBuildingSquareSpinner>
+                    {/* <SelfBuildingSquareSpinner size={70} color={`${params.data.canvas.canvasIndicator}`}></SelfBuildingSquareSpinner> */}
+                    <h2>status</h2>
                   </div>
                   <p>Status: {params.data.canvas.canvasDescription}</p>
                   {dateFormat(params.data.canvas.canvasStatus, "dddd, mmmm dS, yyyy")}
@@ -63,7 +64,8 @@ const Works = params => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                     <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                      <SelfBuildingSquareSpinner size={70} color={`${params.data.respondus.respondusIndicator}`}></SelfBuildingSquareSpinner>
+                      {/* <SelfBuildingSquareSpinner size={70} color={`${params.data.respondus.respondusIndicator}`}></SelfBuildingSquareSpinner> */}
+                      <h2>status</h2>
                     </div>
                     <p>Status: {params.data.respondus.respondusDescription}</p>
                     {dateFormat(params.data.respondus.respondusStatus, "dddd, mmmm dS, yyyy")}
@@ -89,7 +91,8 @@ const Works = params => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                       <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                        <SelfBuildingSquareSpinner size={70} color={`${params.data.turnitin.turnitinIndicator}`}></SelfBuildingSquareSpinner>
+                        {/* <SelfBuildingSquareSpinner size={70} color={`${params.data.turnitin.turnitinIndicator}`}></SelfBuildingSquareSpinner> */}
+                        <h2>status</h2>
                       </div>
                       <p>Status: {params.data.turnitin.turnitinDescription}</p>
                       {dateFormat(params.data.turnitin.turnitinStatus, "dddd, mmmm dS, yyyy")}
@@ -114,7 +117,8 @@ const Works = params => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                         <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                          <SelfBuildingSquareSpinner size={70} color={`${params.data.zoom.zoomIndicator}`}></SelfBuildingSquareSpinner>
+                          {/* <SelfBuildingSquareSpinner size={70} color={`${params.data.zoom.zoomIndicator}`}></SelfBuildingSquareSpinner> */}
+                          <h2>status</h2>
                         </div>
                         <p>Status: {params.data.zoom.zoomDescription}</p>
                         {dateFormat(params.data.zoom.zoomStatus, "dddd, mmmm dS, yyyy")}

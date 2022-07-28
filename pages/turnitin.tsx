@@ -4,7 +4,7 @@ import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
 import Head from "next/head";
 import dateFormat from "dateformat";
-import { FingerprintSpinner } from "react-epic-spinners";
+// import { FingerprintSpinner } from "react-epic-spinners";
 import customCss from "../lib/cssFunction";
 
 const easing = [.6, -.05, .01, .99]
@@ -77,7 +77,8 @@ const turnitinPage = (props) => {
         <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
             <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-              <FingerprintSpinner size={95} color={`${props.turnitinIndicator}`}></FingerprintSpinner>
+              {/* <FingerprintSpinner size={95} color={`${props.turnitinIndicator}`}></FingerprintSpinner> */}
+              <h2>status</h2>
             </div>
             <p>Status: {props.turnitinDescription}</p>
             {dateFormat(props.turnitinStatus, "dddd, mmmm dS, yyyy")}
