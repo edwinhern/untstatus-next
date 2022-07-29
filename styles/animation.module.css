@@ -11,7 +11,7 @@
 /* For mobile viewing  */
 @media screen and (min-width: 100px) and (max-width: 480px) {
     .work {
-        background-image: url("../public/assets/background/particles-mobile.svg");
+        background-image: url("../public/assets/background/particles.png");
     }
 }
 
