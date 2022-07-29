@@ -1,9 +1,6 @@
 import React, { useRef, useContext, useState, useCallback, useEffect } from "react";
 import { ScrollContext } from "../utils/scroll-observer";
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import bg from '../public/assets/background/bg-ani.svg'
-const bg2 = require('../public/assets/background/bg-ani.svg');
 import s from '../styles/animation.module.css'
 const easing = [.6, -.05, .01, .99]
 

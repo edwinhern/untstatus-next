@@ -1,6 +1,5 @@
 import dateFormat from "dateformat";
 import React from "react";
-// import { FingerprintSpinner, SelfBuildingSquareSpinner } from "react-epic-spinners";
 import { Tile, TileBackground, TileContent, TileWrapper } from "./tile";
 import {
   WorkBackground,
@@ -26,7 +25,7 @@ const Works = params => (
           <WorkContainer>
             <WorkLeft progress={progress}>
               <div id='canvas'>We brought </div>
-              <div className="text-4xl md:text-5xl font-semibold tracking-tight">
+              <div className={`text-4xl md:text-5xl font-semibold tracking-tight`}>
                 <WorkLink href="https://statushistory.instructure.com/unt.instructure.com">
                   Canvas
                 </WorkLink>{" "}

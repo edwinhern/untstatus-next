@@ -4,11 +4,10 @@ import {WorkLink} from "../components/work";
 import {motion} from 'framer-motion';
 import Head from "next/head";
 import dateFormat from "dateformat";
-// import { FingerprintSpinner } from "react-epic-spinners";
 import customCss from "../lib/cssFunction";
+import s from "../styles/animation.module.css"
 
 const easing = [.6, -.05, .01, .99]
-
 const fadeInUp = {
   inital: {
     y:100,
@@ -62,9 +61,9 @@ const turnitinPage = (props) => {
       exit={{ opacity: 0 }} variants={stagger}
       className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
         {/* Work Left */}
-        <motion.div variants={fadeInUp} className="bg-opacity-100 saturate-100 bg-[#38e07b]
+        <motion.div variants={fadeInUp} className={`${s.page} bg-opacity-100 saturate-100
         flex flex-col items-center justify-center h-[30vh] lg:h-auto
-        text-white text-4xl md:text-5xl font-semibold leading-10"
+        text-white text-4xl md:text-5xl font-semibold leading-10`}
         >
            <span>
             <WorkLink  href="https://turnitin.statuspage.io/">

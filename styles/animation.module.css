@@ -1,4 +1,9 @@
 .page {
     background-repeat: no-repeat;
-    background-image: url("../public/assets/background/test1.svg");
+    background-image: url("../public/assets/background/home.svg");
+}
+
+.work {
+    background-repeat: no-repeat;
+    background-image: url("../public/assets/background/particles.svg");
 }
