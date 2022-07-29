@@ -57,7 +57,7 @@ const Masthead = () => {
         loop
         muted
         playsInline
-        className={`${s.page} absolute w-screen min-h-[90vh] md:h-screen object-cover saturate-100`}
+        className={`${s.homeScreen} absolute w-screen min-h-[90vh] md:h-screen object-cover saturate-100`}
         
       >
         {/* <source

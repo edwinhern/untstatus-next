@@ -61,7 +61,7 @@ const zoomPage = (props) => {
       exit={{ opacity: 0 }}  
       className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
         {/* Work Left */}
-        <motion.div variants={fadeInUp} className={`${s.page} bg-opacity-100 saturate-100
+        <motion.div variants={fadeInUp} className={`${s.homeScreen} bg-opacity-100 saturate-100
         flex flex-col items-center justify-center h-[30vh] lg:h-auto
         text-white text-4xl md:text-5xl font-semibold leading-10`}
         >
