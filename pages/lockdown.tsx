@@ -62,7 +62,7 @@ const lockdownPage = (props) => {
       exit={{ opacity: 0 }} 
       className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
         {/* Work Left */}
-        <motion.div variants={fadeInUp} className="bg-opacity-100 saturate-100 bg-green-500
+        <motion.div variants={fadeInUp} className="bg-opacity-100 saturate-100 bg-[#7beaa7]
         flex flex-col items-center justify-center h-[30vh] lg:h-auto
         text-white text-[34px] md:text-5xl font-semibold leading-10"
         >

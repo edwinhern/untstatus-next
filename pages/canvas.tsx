@@ -6,6 +6,7 @@ import Head from "next/head";
 import fetch from 'isomorphic-unfetch';
 import dateFormat from 'dateformat';
 import customCss from "../lib/cssFunction";
+import s from "../styles/animation.module.css"
 // import { FingerprintSpinner } from "react-epic-spinners";
 const easing = [.6, -.05, .01, .99]
 const fadeInUp = {
@@ -60,7 +61,7 @@ const canvasPage = (props) => {
       {/* Work Container */}
       <div className="grid grid-cols-1 lg:grid-cols-2 w-full  top-0 sticky">
         {/* Work Left */}
-        <motion.div variants={fadeInUp} className="bg-opacity-100 saturate-100 bg-pink-500
+        <motion.div variants={fadeInUp} className="bg-opacity-100 saturate-100 bg-[#bdf5d3]
         flex flex-col items-center justify-center h-[30vh] lg:h-auto
         text-white text-4xl md:text-5xl font-semibold leading-10"
         >
@@ -109,3 +110,5 @@ export async function getServerSideProps({req,res}) {
 };
 
 export default canvasPage;
+
+

@@ -1,9 +1,10 @@
 import React, { useRef, useContext, useState, useCallback, useEffect } from "react";
 import { ScrollContext } from "../utils/scroll-observer";
 import { motion } from 'framer-motion';
-import BIRDS from 'vanta/dist/vanta.birds.min'
-
-
+import Image from 'next/image';
+import bg from '../public/assets/background/bg-ani.svg'
+const bg2 = require('../public/assets/background/bg-ani.svg');
+import s from '../styles/animation.module.css'
 const easing = [.6, -.05, .01, .99]
 
 const fadeInUp = {
@@ -46,10 +47,10 @@ const Masthead = () => {
   }, []);
 
   return (
-    <motion.div variants={stagger} 
+    <motion.div variants={stagger}
     animate={{ opacity:1}} initial={{ opacity:0}} transition={{delay: .2}}
       ref={refContainer}
-      className="min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center sticky top-0 -z-10"
+      className={`min-h-[90vh] md:min-h-screen flex flex-col items-center justify-center sticky top-0 -z-10`}
       style={{
         transform: `translateY(=${progress * 20}vh)`,
       }}
@@ -59,17 +60,19 @@ const Masthead = () => {
         loop
         muted
         playsInline
-        className="absolute w-screen min-h-[90vh] md:h-screen object-cover saturate-150"
+        className={`${s.page} absolute w-screen min-h-[90vh] md:h-screen object-cover saturate-100`}
+        
       >
-        <source
-          src="/assets/background/bg-video.mp4"
+        {/* <source
+          src="/assets/background/bg-ani.mp4"
           type="video/mp4; codecs=hvc1"
-        />
-        <source
-          src="/assets/background/bg-video.webm"
+        /> */}
+        {/* <source
+          src="/assets/background/test9.webm"
           type="video/webm; codecs=vp9"
-        />
+        /> */}
       </video>
+
       <motion.div variants={fadeInUp} className="p-12 font-bold z-10 text-white text-center flex-1 flex items-center justify-center flex-col">
         <h1 className="mb-6 uppercase text-4xl xl:text-5xl">unt<a className="font-thin">Status</a></h1>
         <h2 className="mb-2 text-2xl xl:text-3xl tracking-tight">
