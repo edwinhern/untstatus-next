@@ -38,8 +38,8 @@ const Works = params => (
                   <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
                     <h2>status</h2>
                   </div>
-                  <p>Status: {params.data.canvas.canvasDescription}</p>
-                  {dateFormat(params.data.canvas.canvasStatus, "dddd, mmmm dS, yyyy")}
+                  {/* <p>Status: {params.data.canvas.canvasDescription}</p> */}
+                  {/* {dateFormat(params.data.canvas.canvasStatus, "dddd, mmmm dS, yyyy")} */}
                 </div>
               </div>
             </WorkRight>
@@ -64,8 +64,8 @@ const Works = params => (
                     <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
                       <h2>status</h2>
                     </div>
-                    <p>Status: {params.data.respondus.respondusDescription}</p>
-                    {dateFormat(params.data.respondus.respondusStatus, "dddd, mmmm dS, yyyy")}
+                    {/* <p>Status: {params.data.respondus.respondusDescription}</p> */}
+                    {/* {dateFormat(params.data.respondus.respondusStatus, "dddd, mmmm dS, yyyy")} */}
                 </div>
               </div>
             </WorkRight>
@@ -90,8 +90,8 @@ const Works = params => (
                       <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
                         <h2>status</h2>
                       </div>
-                      <p>Status: {params.data.turnitin.turnitinDescription}</p>
-                      {dateFormat(params.data.turnitin.turnitinStatus, "dddd, mmmm dS, yyyy")}
+                      {/* <p>Status: {params.data.turnitin.turnitinDescription}</p> */}
+                      {/* {dateFormat(params.data.turnitin.turnitinStatus, "dddd, mmmm dS, yyyy")} */}
                   </div>
               </div>
             </WorkRight>
@@ -115,8 +115,8 @@ const Works = params => (
                         <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
                           <h2>status</h2>
                         </div>
-                        <p>Status: {params.data.zoom.zoomDescription}</p>
-                        {dateFormat(params.data.zoom.zoomStatus, "dddd, mmmm dS, yyyy")}
+                        {/* <p>Status: {params.data.zoom.zoomDescription}</p> */}
+                        {/* {dateFormat(params.data.zoom.zoomStatus, "dddd, mmmm dS, yyyy")} */}
                 </div>
               </div>
             </WorkRight>
