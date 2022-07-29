@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useCallback, useEffect } from "react";
+import React, { useRef, useContext, useState, useCallback } from "react";
 import { ScrollContext } from "../utils/scroll-observer";
 import { motion } from 'framer-motion';
 import s from '../styles/animation.module.css'

@@ -1,7 +1,12 @@
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import dynamic from "next/dynamic";
+import { Suspense } from 'react';
 import Masthead from "../components/mashead";
+const DynamicWorks = dynamic( () => import('../components/works'), { 
+  suspense: true,
+});
 import AboutUs from "../components/aboutus";
 import Works from "../components/works";
 import Testimonials from "../components/testimonials";
@@ -31,22 +36,24 @@ const fadeInUp = {
 
 const Home: NextPage = (props) => {
   return (
-    <motion.div animate="animate" initial="inital" exit={{ opacity: 0 }}>
-      <Head>
-        <title>Welcome</title>
-        <meta name="description" content="Made for the people, UNT." />
-        <link rel="icon" href="/assets/logos/logo-100.svg" />
-      </Head>
-      <motion.div variants={fadeInUp}>
-        <Navbar />
+      <motion.div animate="animate" initial="inital" exit={{ opacity: 0 }}>
+        <Head>
+          <title>Welcome</title>
+          <meta name="description" content="Made for the people, UNT." />
+          <link rel="icon" href="/assets/logos/logo-100.svg" />
+        </Head>
+        <motion.div variants={fadeInUp}>
+          <Navbar />
+        </motion.div>
+        <Masthead />
+        <AboutUs />
+        <Suspense fallback={`Loading...`}>
+        <DynamicWorks data={props} />
+        </Suspense>
+        <Testimonials />
+        <ContactForm />
+        <Footer />
       </motion.div>
-      <Masthead />
-      <AboutUs />
-      <Works data={props} />
-      <Testimonials />
-      <ContactForm />
-      <Footer />
-    </motion.div>
   );
 };
 
