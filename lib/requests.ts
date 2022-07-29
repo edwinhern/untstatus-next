@@ -2,7 +2,7 @@
 import customCss from "./cssFunction";
 
 export const getCanvasStatus = async () => {
-  return await fetch(`https://status.instructure.com/api/v2/status.json`)
+  return fetch(`https://status.instructure.com/api/v2/status.json`)
     .then(function (res) {
       return res.json();
     })
@@ -20,7 +20,7 @@ export const getCanvasStatus = async () => {
 };
 
 export const getRespondusStatus = async () => {
-  return await fetch(`https://status.respondus.com/api/v2/status.json`)
+  return fetch(`https://status.respondus.com/api/v2/status.json`)
     .then(function (res) {
       return res.json();
     })
@@ -38,7 +38,7 @@ export const getRespondusStatus = async () => {
 };
 
 export const getTurnitinStatus = async () => {
-  return await fetch(`https://turnitin.statuspage.io/api/v2/status.json`)
+  return fetch(`https://turnitin.statuspage.io/api/v2/status.json`)
     .then(function (res) {
       return res.json();
     })
@@ -56,7 +56,7 @@ export const getTurnitinStatus = async () => {
 };
 
 export const getZoomStatus = async () => {
-  return await fetch(`https://status.zoom.us/api/v2/status.json`)
+  return fetch(`https://status.zoom.us/api/v2/status.json`)
     .then(function (res) {
       return res.json();
     })

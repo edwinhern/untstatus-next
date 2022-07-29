@@ -63,17 +63,17 @@ export async function getServerSideProps({req, res}) {
     'Cache-Control',
     'public, s-maxage=10, stale-while-revalidate=59'
   )
-  const canvasJson = getCanvasStatus();
-  const respondusJson = getRespondusStatus();
-  const turnitinJson = getTurnitinStatus();
-  const zoomJson = getZoomStatus();
+  const canvasJson = await getCanvasStatus();
+  const respondusJson = await getRespondusStatus();
+  const turnitinJson = await getTurnitinStatus();
+  const zoomJson = await getZoomStatus();
 
   return {
     props: {
-      canvas: await canvasJson,
-      respondus: await respondusJson,
-      turnitin: await turnitinJson,
-      zoom: await zoomJson,
+      canvas: canvasJson,
+      respondus: respondusJson,
+      turnitin: turnitinJson,
+      zoom: zoomJson,
     },
   };
 }

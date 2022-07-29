@@ -62,7 +62,6 @@ const Works = params => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                     <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                      {/* <SelfBuildingSquareSpinner size={70} color={`${params.data.respondus.respondusIndicator}`}></SelfBuildingSquareSpinner> */}
                       <h2>status</h2>
                     </div>
                     <p>Status: {params.data.respondus.respondusDescription}</p>
@@ -89,7 +88,6 @@ const Works = params => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                       <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                        {/* <SelfBuildingSquareSpinner size={70} color={`${params.data.turnitin.turnitinIndicator}`}></SelfBuildingSquareSpinner> */}
                         <h2>status</h2>
                       </div>
                       <p>Status: {params.data.turnitin.turnitinDescription}</p>
@@ -115,7 +113,6 @@ const Works = params => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                         <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                          {/* <SelfBuildingSquareSpinner size={70} color={`${params.data.zoom.zoomIndicator}`}></SelfBuildingSquareSpinner> */}
                           <h2>status</h2>
                         </div>
                         <p>Status: {params.data.zoom.zoomDescription}</p>
