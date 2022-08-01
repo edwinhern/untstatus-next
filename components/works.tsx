@@ -1,5 +1,6 @@
 import dateFormat from "dateformat";
 import React from "react";
+import Image from "next/image"
 import { Tile, TileBackground, TileContent, TileWrapper } from "./tile";
 import {
   WorkBackground,
@@ -8,7 +9,7 @@ import {
   WorkLink,
   WorkRight,
 } from "./work";
-
+import img from '../public/assets/background/test.jpg'
 const Works = params => (
   <TileWrapper numOfPages={4}>
     <TileBackground page={0} renderContent={function (props: { progress: number; }) {
@@ -33,15 +34,12 @@ const Works = params => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <div className="text-black text-3xl">
-                <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-                  <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                    <h2>status</h2>
-                  </div>
-                  {/* <p>Status: {params.data.canvas.canvasDescription}</p> */}
-                  {/* {dateFormat(params.data.canvas.canvasStatus, "dddd, mmmm dS, yyyy")} */}
-                </div>
-              </div>
+              
+              <Image 
+              src={img}
+              layout="responsive"
+              width={840}
+              height={1620} />
             </WorkRight>
           </WorkContainer>
         )}

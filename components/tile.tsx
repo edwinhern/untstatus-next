@@ -63,8 +63,7 @@ export const TileBackground: React.FC<Props> = ({ children }) => (
 export const TileContent: React.FC<Props> = ({ children }) => (
   <div className="sticky top-0 h-screen overflow-hidden">{children}</div>
 );
-
-interface Props {
+ interface Props {
   page: number;
   renderContent: (props: { progress: number }) => any;
 }

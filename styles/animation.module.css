@@ -1,6 +1,11 @@
-.homeScreen {
+.mainScreen {
     background-repeat: no-repeat;
     background-image: url("../public/assets/background/home.svg");
+}
+
+.homeScreen {
+    background-repeat: no-repeat;
+    background-image: url("../public/assets/background/home1.svg");
 }
 
 .work {
@@ -22,3 +27,4 @@
         background-image: url("../public/assets/background/particles.svg");
     }
 }
+

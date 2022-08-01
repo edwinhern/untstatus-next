@@ -6,7 +6,8 @@ import Head from "next/head";
 import fetch from 'isomorphic-unfetch';
 import dateFormat from 'dateformat';
 import customCss from "../lib/cssFunction";
-import s from "../styles/animation.module.css"
+import s  from '../styles/animation.module.css'
+import Animation from '../components/animation';
 
 const easing = [.6, -.05, .01, .99]
 const fadeInUp = {
@@ -59,10 +60,10 @@ const canvasPage = (props) => {
         <link rel="icon" href="/assets/logos/logo-100.svg" />
       </Head>
       {/* Work Container */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 w-full  top-0 sticky">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-full top-0 sticky`">
         {/* Work Left */}
         <motion.div variants={fadeInUp} className={`${s.homeScreen} bg-opacity-100 saturate-100
-        flex flex-col items-center justify-center h-[30vh] lg:h-auto
+        flex flex-col items-center justify-center h-[30vh] lg:h-[93vh]
         text-white text-4xl md:text-5xl font-semibold leading-10`}
         >
           <span>
@@ -73,11 +74,10 @@ const canvasPage = (props) => {
           </span>
         </motion.div> {/* Work Left */}
         {/* Work Right */}
-        <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
+        <div className="bg-white h-[59vh] md:h-[63vh] lg:h-[93vh] flex flex-1 lg:items-center text-center justify-center ">
           <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-            <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-              {/* <FingerprintSpinner size={95} color={`${props.canvasIndicator}`}></FingerprintSpinner> */}
-              <h2>status</h2>
+            <div className="flex flex-1 justify-center mb-[60px] h-[100px]">
+              <Animation />
             </div>
               <p>Status: {props.canvasDescription}</p>
               {dateFormat(props.canvasStatus, "dddd, mmmm dS, yyyy")}
