@@ -13,12 +13,12 @@ import Testimonials from "../components/testimonials";
 import Footer from "../components/footer";
 import ContactForm from "../components/contact-form";
 import Navbar from "../components/navbar";
-import {
-  getCanvasStatus,
-  getRespondusStatus,
-  getTurnitinStatus,
-  getZoomStatus,
-} from "../lib/requests";
+// import {
+//   getCanvasStatus,
+//   getRespondusStatus,
+//   getTurnitinStatus,
+//   getZoomStatus,
+// } from "../lib/requests";
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const fadeInUp = {
@@ -56,24 +56,24 @@ const Home: NextPage = (props) => {
 };
 
 // Call API requests to receive the data
-export async function getServerSideProps({req, res}) {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
-  const canvasJson = await getCanvasStatus();
-  const respondusJson = await getRespondusStatus();
-  const turnitinJson = await getTurnitinStatus();
-  const zoomJson = await getZoomStatus();
+// export async function getServerSideProps({req, res}) {
+//   res.setHeader(
+//     'Cache-Control',
+//     'public, s-maxage=10, stale-while-revalidate=59'
+//   )
+//   const canvasJson = await getCanvasStatus();
+//   const respondusJson = await getRespondusStatus();
+//   const turnitinJson = await getTurnitinStatus();
+//   const zoomJson = await getZoomStatus();
 
-  return {
-    props: {
-      canvas: canvasJson,
-      respondus: respondusJson,
-      turnitin: turnitinJson,
-      zoom: zoomJson,
-    },
-  };
-}
+//   return {
+//     props: {
+//       canvas: canvasJson,
+//       respondus: respondusJson,
+//       turnitin: turnitinJson,
+//       zoom: zoomJson,
+//     },
+//   };
+// }
 
 export default Home;

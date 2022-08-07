@@ -1,4 +1,3 @@
-import dateFormat from "dateformat";
 import React from "react";
 import Image from "next/image"
 import { Tile, TileBackground, TileContent, TileWrapper } from "./tile";
@@ -10,6 +9,7 @@ import {
   WorkRight,
 } from "./work";
 import img from '../public/assets/background/test.jpg'
+
 const Works = () => (
   <TileWrapper numOfPages={4}>
     <TileBackground page={0} renderContent={function (props: { progress: number; }) {
@@ -60,10 +60,8 @@ const Works = () => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                     <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                      <h2>status</h2>
+                      <h2>Coming soon...</h2>
                     </div>
-                    {/* <p>Status: {params.data.respondus.respondusDescription}</p> */}
-                    {/* {dateFormat(params.data.respondus.respondusStatus, "dddd, mmmm dS, yyyy")} */}
                 </div>
               </div>
             </WorkRight>
@@ -86,10 +84,8 @@ const Works = () => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                       <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                        <h2>status</h2>
+                      <h2>Coming soon...</h2>
                       </div>
-                      {/* <p>Status: {params.data.turnitin.turnitinDescription}</p> */}
-                      {/* {dateFormat(params.data.turnitin.turnitinStatus, "dddd, mmmm dS, yyyy")} */}
                   </div>
               </div>
             </WorkRight>
@@ -111,10 +107,8 @@ const Works = () => (
               <div className="text-black text-3xl">
                 <div className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
                         <div className="flex flex-1 justify-center mb-[40px] pb-10 h-[100px]">
-                          <h2>status</h2>
+                          <h2>Coming soon...</h2>
                         </div>
-                        {/* <p>Status: {params.data.zoom.zoomDescription}</p> */}
-                        {/* {dateFormat(params.data.zoom.zoomStatus, "dddd, mmmm dS, yyyy")} */}
                 </div>
               </div>
             </WorkRight>
