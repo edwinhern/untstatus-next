@@ -1,6 +1,7 @@
 import React from "react";
 import s from "../styles/status.module.css";
-const Animation = () => {
+const Animation = params => {
+  console.log(params)
   return (
     <>
       <div className={`${s.ldsDefault}`}>

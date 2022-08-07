@@ -10,7 +10,7 @@ import {
   WorkRight,
 } from "./work";
 import img from '../public/assets/background/test.jpg'
-const Works = params => (
+const Works = () => (
   <TileWrapper numOfPages={4}>
     <TileBackground page={0} renderContent={function (props: { progress: number; }) {
       throw new Error("Function not implemented.");

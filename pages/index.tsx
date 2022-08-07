@@ -1,12 +1,12 @@
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Head from "next/head";
-import dynamic from "next/dynamic";
-import { Suspense } from 'react';
+// import dynamic from "next/dynamic";
+// import { Suspense } from 'react';
 import Masthead from "../components/mashead";
-const DynamicWorks = dynamic( () => import('../components/works'), { 
-  suspense: true,
-});
+// const DynamicWorks = dynamic( () => import('../components/works'), { 
+//   suspense: true,
+// });
 import AboutUs from "../components/aboutus";
 import Works from "../components/works";
 import Testimonials from "../components/testimonials";
@@ -47,9 +47,7 @@ const Home: NextPage = (props) => {
         </motion.div>
         <Masthead />
         <AboutUs />
-        <Suspense fallback={`Loading...`}>
-        <DynamicWorks data={props} />
-        </Suspense>
+        <Works /> 
         <Testimonials />
         <ContactForm />
         <Footer />
