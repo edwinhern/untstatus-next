@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import s from '../styles/animation.module.css'
+import s from '../styles/work.module.css'
 
 interface Props {
   children: React.ReactNode
@@ -33,7 +33,7 @@ export const WorkLeft: React.FC<Props1> = ({
   if (progress > 0.85) translateY = Math.max(-50, -(progress - 0.85) * 2 * 50);
   return (
     <div
-      className={`flex flex-col items-center justify-center text-3xl lg:text-3xl h-[30vh] lg:h-auto`}
+      className={`${s.work} flex flex-col items-center justify-center text-3xl lg:text-3xl h-[30vh] lg:h-auto`}
       style={{
         transform: `translateY(${translateY}px)`,
       }}
