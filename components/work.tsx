@@ -55,7 +55,7 @@ export const WorkRight: React.FC<Props1> = ({
         transform: `translateY(${translateY}px)`,
       }}
     >
-      <div className="w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+      <div className="text-black text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
         {children}
       </div>
     </div>
