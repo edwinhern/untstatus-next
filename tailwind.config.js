@@ -8,11 +8,7 @@ module.exports = {
     safelist: [],
   },
   theme: {
-    extend: {
-      height: {
-        "half-screen": "50vh",
-      },
-    },
+  
   },
   plugins: [],
 };

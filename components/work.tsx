@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import s from '../styles/work.module.css'
 
 interface Props {
   children: React.ReactNode
@@ -18,8 +19,7 @@ export const WorkContainer: React.FC<Props> = ({ children }) => (
 
 export const WorkBackground: React.FC = () => (
   <div className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
-    <div className="opacity-60 bg-gradient-to-r from-purple-500 via-blue-500 to-pink-500 saturate-150 h-[30vh] lg:h-auto"></div>
-    {/* <div className="bg-black saturate-150 h-[30vh] lg:h-auto"></div> */}
+    <div className="bg-black h-[30vh] lg:h-auto"></div>
     <div className="bg-white h-[70vh] lg:min-h-screen"></div>
   </div>
 );
@@ -33,7 +33,7 @@ export const WorkLeft: React.FC<Props1> = ({
   if (progress > 0.85) translateY = Math.max(-50, -(progress - 0.85) * 2 * 50);
   return (
     <div
-      className="flex flex-col items-center justify-center text-3xl lg:text-3xl h-[30vh] lg:h-auto"
+      className={`${s.work} flex flex-col items-center justify-center text-3xl lg:text-3xl h-[30vh] lg:h-auto`}
       style={{
         transform: `translateY(${translateY}px)`,
       }}
@@ -55,7 +55,7 @@ export const WorkRight: React.FC<Props1> = ({
         transform: `translateY(${translateY}px)`,
       }}
     >
-      <div className="w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+      <div className="text-black text-2xl md:text-3xl w-full max-w-md pt-20 lg:pt-0 px-10 md:px-0">
         {children}
       </div>
     </div>

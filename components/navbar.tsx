@@ -18,11 +18,11 @@ const Navbar: React.FC = () => {
               </a></Link>
             </div>
             <div className={`md:mt-4`}>
-                <Link href="/canvas"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-pink-500">Canvas</a></Link>
-                <Link href="/lockdown"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-green-500">Lockdown</a></Link>
-                <Link href="/turnitin"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-purple-500">Turnitin</a></Link>
-                <Link href="/zoom"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-blue-500">Zoom</a></Link>
-                <Link href="https://buy.stripe.com/14k5mlcrTcbC7Li3cc"><a className="text-white p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-pink-500">Donate</a></Link>
+                <Link href="/canvas"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-white">Canvas</a></Link>
+                <Link href="/lockdown"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-white">Lockdown</a></Link>
+                <Link href="/turnitin"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-white">Turnitin</a></Link>
+                <Link href="/zoom"><a className="p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-white">Zoom</a></Link>
+                <Link href="https://buy.stripe.com/14k5mlcrTcbC7Li3cc"><a className="text-white p-4 px-3 sm:px-4 border-b-4 border-transparent hover:border-white">Donate</a></Link>
             </div>
           </div>
         </div>

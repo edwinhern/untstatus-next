@@ -63,8 +63,7 @@ export const TileBackground: React.FC<Props> = ({ children }) => (
 export const TileContent: React.FC<Props> = ({ children }) => (
   <div className="sticky top-0 h-screen overflow-hidden">{children}</div>
 );
-
-interface Props {
+ interface Props {
   page: number;
   renderContent: (props: { progress: number }) => any;
 }
@@ -84,7 +83,7 @@ export const Tile: React.FC<Props> = ({ page, renderContent }) => {
       ref={refContainer}
       className="absolute top-0 w-full"
       style={{
-        pointerEvents: progress <= 0 || progress >= 1 ? "none" : undefined,
+        pointerEvents: progress >= 0 || progress >= 1 ? "none" : undefined,
         opacity,
       }}
     >

@@ -19,13 +19,18 @@ const AboutUs: React.FC = () => {
     const { clientHeight, offsetTop } = elContainer;
     const screenH = window.innerHeight;
     const halfH = screenH / 2;
-    const percentY = Math.min(clientHeight + halfH,
-      Math.max(-screenH, scrollY - offsetTop) + halfH
+    const percentY =
+      Math.min(
+        clientHeight + halfH,
+        Math.max(-screenH, scrollY - offsetTop) + halfH
       ) / clientHeight;
     progress = Math.min(numOfPage - 0.5, Math.max(0.5, percentY * numOfPage));
   }
   return (
-    <section id="about" className="flex flex-col bg-black text-white py-10 lg:py-20">
+    <section
+      id="about"
+      className="flex flex-col bg-black text-white py-5 lg:py-10"
+    >
       <div
         ref={refContainer}
         className="tracking-normal font-bold container mx-auto px-10 lg:px-20 py-10 lg:py-20"
@@ -37,7 +42,8 @@ const AboutUs: React.FC = () => {
               opacity: opacityForBlock(progress, 0),
             }}
           >
-            Here to keep you up to date, <strong className="text-blue-500">faster</strong>.
+            Here to keep you up to date,{" "}
+            <strong className="text-blue-500">faster</strong>.
           </span>
           <span
             className={`${s.aboutText} inline-block leading-snug after:content-['_']`}
@@ -46,8 +52,11 @@ const AboutUs: React.FC = () => {
             }}
           >
             This project has been on my mind for some time.&nbsp;This was
-            inspired by the <strong className="text-pink-500">AWS outage</strong> that happened during finals week in
-            term: <strong className="text-purple-500">Fall 2021</strong> at <strong className="text-green-500">UNT</strong>.
+            inspired by the{" "}
+            <strong className="text-pink-500">AWS outage</strong> that happened
+            during finals week in term:{" "}
+            <strong className="text-purple-500">Fall 2021</strong> at{" "}
+            <strong className="text-green-500">UNT</strong>.
           </span>
           <span
             className={`${s.aboutText} leading-snug inline-block`}
@@ -55,48 +64,15 @@ const AboutUs: React.FC = () => {
               opacity: opacityForBlock(progress, 2),
             }}
           >
-            Hopefully, it is useful for us <strong className="">UNT Faculty</strong>, <strong className="">Staff</strong>, and <strong className="text-pink-500">Students </strong>
-            further down the road. 
+            Hopefully, it is useful for us{" "}
+            <strong className="">UNT Faculty</strong>,{" "}
+            <strong className="">Staff</strong>, and{" "}
+            <strong className="text-pink-500">Students </strong>
+            further down the road.
           </span>
         </p>
       </div>
     </section>
-
-    // <div ref={refContainer} className="bg-black text-white">
-    //   <div className="min-h-[100vh] max-w-5xl mx-auto px-10 lg:px-20 py-2 md:py-28 lg:py-36 flex flex-col justify-center items-center text-3xl md:text-5xl lg:text-6xl tracking-tight font-semibold">
-    //     <div className="leading-[1.15]">
-    //       <div>
-    //         <span
-    //           className={`${s.aboutText}`}
-    //           style={{
-    //             opacity: opacityForBlock(progress, 0),
-    //           }}
-    //         >
-    //           Here to keep you up to date, faster.
-    //         </span>
-    //         <span
-    //           className={`${s.aboutText} inline-block after:content-['_']`}
-    //           style={{
-    //             opacity: opacityForBlock(progress, 1),
-    //           }}
-    //         >
-    //           This project has been on my mind for some time.&nbsp;This was
-    //           inspired by the AWS outage we experienced during finals week in
-    //           term: Fall 2021.
-    //         </span>
-    //         <span
-    //           className={`${s.aboutText} inline-block`}
-    //           style={{
-    //             opacity: opacityForBlock(progress, 2),
-    //           }}
-    //         >
-    //           Hopefully, it is useful for us UNT Faculty, Staff, and Students
-    //           further down the road.
-    //         </span>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 
