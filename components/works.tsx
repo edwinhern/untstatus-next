@@ -1,5 +1,7 @@
 import React from "react";
+import Image from 'next/image'
 import { Tile, TileBackground, TileContent, TileWrapper } from "./tile";
+import style from '../styles/works.module.css'
 import {
   WorkBackground,
   WorkContainer,
@@ -40,7 +42,13 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <h2>Coming soon...</h2>
+              <div className={style.imageContainer}>
+              <Image 
+                className={'image'}
+                    src="/assets/works/onlineTest.svg"
+                    layout="fill" objectFit="contain"
+                  />
+              </div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -61,7 +69,13 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <h2>Coming soon...</h2>
+              <div className={style.imageContainer}>
+                <Image 
+                  className={'image'}
+                  src="/assets/works/mobileEncryption.svg"
+                  layout="fill" objectFit="contain"
+                />
+              </div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -82,7 +96,13 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <h2>Coming soon...</h2>
+              <div className={style.imageContainer}>
+                <Image 
+                  className={'image'}
+                  src="/assets/works/secureFiles.svg"
+                  layout="fill" objectFit="contain"
+                />
+              </div>
             </WorkRight>
           </WorkContainer>
         )}
@@ -99,7 +119,13 @@ const Works = () => (
               </div>
             </WorkLeft>
             <WorkRight progress={progress}>
-              <h2>Coming soon...</h2>
+              <div className={style.imageContainer}>
+                <Image 
+                  className={'image'}
+                  src="/assets/works/groupCall.svg"
+                  layout="fill" objectFit="contain"
+                />
+              </div>
             </WorkRight>
           </WorkContainer>
         )}

@@ -1,24 +1,13 @@
 import type { NextPage } from "next";
 import { motion } from "framer-motion";
 import Head from "next/head";
-// import dynamic from "next/dynamic";
-// import { Suspense } from 'react';
 import Masthead from "../components/mashead";
-// const DynamicWorks = dynamic( () => import('../components/works'), { 
-//   suspense: true,
-// });
 import AboutUs from "../components/aboutus";
 import Works from "../components/works";
 import Testimonials from "../components/testimonials";
 import Footer from "../components/footer";
 import ContactForm from "../components/contact-form";
 import Navbar from "../components/navbar";
-// import {
-//   getCanvasStatus,
-//   getRespondusStatus,
-//   getTurnitinStatus,
-//   getZoomStatus,
-// } from "../lib/requests";
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const fadeInUp = {
@@ -34,7 +23,7 @@ const fadeInUp = {
   },
 };
 
-const Home: NextPage = (props) => {
+const Home: NextPage = () => {
   return (
       <motion.div animate="animate" initial="inital" exit={{ opacity: 0 }}>
         <Head>
@@ -54,26 +43,5 @@ const Home: NextPage = (props) => {
       </motion.div>
   );
 };
-
-// Call API requests to receive the data
-// export async function getServerSideProps({req, res}) {
-//   res.setHeader(
-//     'Cache-Control',
-//     'public, s-maxage=10, stale-while-revalidate=59'
-//   )
-//   const canvasJson = await getCanvasStatus();
-//   const respondusJson = await getRespondusStatus();
-//   const turnitinJson = await getTurnitinStatus();
-//   const zoomJson = await getZoomStatus();
-
-//   return {
-//     props: {
-//       canvas: canvasJson,
-//       respondus: respondusJson,
-//       turnitin: turnitinJson,
-//       zoom: zoomJson,
-//     },
-//   };
-// }
 
 export default Home;
