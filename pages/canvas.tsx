@@ -25,12 +25,10 @@ const canvasPage = (props) => {
       </Head>
       <WorkContainer1>
         <WorkLeft1>
-          <span>
             <WorkLink href="https://statushistory.instructure.com/unt.instructure.com">
               Canvas
             </WorkLink>{" "}
             Integration
-          </span>
         </WorkLeft1>
         <WorkRight1>
           <WorkAnimation1>
