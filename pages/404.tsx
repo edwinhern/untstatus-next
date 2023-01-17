@@ -1,4 +1,4 @@
-import style from "../styles/Pages.module.css";
+import style from "../styles/pages.module.css";
 
 export default function Custom404() {
   return (

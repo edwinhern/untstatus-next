@@ -6,14 +6,14 @@ import { Navbar } from "../components/";
 import Head from "next/head";
 import { Source_Sans_Pro } from "@next/font/google";
 
-const inter = Source_Sans_Pro({
+const sourceSansPro = Source_Sans_Pro({
   subsets: ["latin"],
   weight: "400",
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <main className={inter.className}>
+    <main className={sourceSansPro.className}>
       <Head>
         <title>UNT Status</title>
         <meta name="description" content="Made for the people, UNT." />

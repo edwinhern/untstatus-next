@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { WorkLink } from "../components/Work.Component";
 import Animation from "../components/Animation.Component";
-import style from "../styles/Pages.module.css";
+import style from "../styles/pages.module.css";
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const fadeInUp = {

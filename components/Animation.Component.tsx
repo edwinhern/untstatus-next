@@ -1,6 +1,6 @@
-import style from "../styles/Status.module.css";
+import style from "../styles/status.module.css";
+
 const Animation = (params) => {
-  console.log(params);
   return (
     <>
       <div className={`${style.ldsDefault}`}>
