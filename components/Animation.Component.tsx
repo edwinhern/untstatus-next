@@ -1,10 +1,9 @@
-import React from "react";
-import s from "../styles/status.module.css";
-const Animation = params => {
-  console.log(params)
+import style from "../styles/Status.module.css";
+const Animation = (params) => {
+  console.log(params);
   return (
     <>
-      <div className={`${s.ldsDefault}`}>
+      <div className={`${style.ldsDefault}`}>
         <div></div>
         <div></div>
         <div></div>
@@ -25,8 +24,8 @@ const Animation = params => {
 const Animation2 = () => {
   return (
     <>
-      <div className={`${s.loadingiospinnerbars84j3pe45fvy}`}>
-        <div className={`${s.ldiodn2ktzqoirp}`}>
+      <div className={`${style.loadingiospinnerbars84j3pe45fvy}`}>
+        <div className={`${style.ldiodn2ktzqoirp}`}>
           <div></div>
           <div></div>
           <div></div>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import React from "react";
-import style from "../styles/pages.module.css";
+import { WorkLink } from "../components/Work.Component";
+import Animation from "../components/Animation.Component";
+import style from "../styles/Pages.module.css";
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const fadeInUp = {
@@ -32,25 +33,26 @@ const fadeInDown = {
   },
 };
 const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1,
-      },
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
     },
-  };
+  },
+};
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const MainContainer1: React.FC<Props> = ({ children }) => (
-    <motion.div
+  <motion.div
     variants={stagger}
-      animate="animate"
-      initial="inital"
-      exit={{ opacity: 0 }}>
-        {children}
-    </motion.div>
+    animate="animate"
+    initial="inital"
+    exit={{ opacity: 0 }}
+  >
+    {children}
+  </motion.div>
 );
 
 export const WorkContainer1: React.FC<Props> = ({ children }) => (
@@ -61,13 +63,11 @@ export const WorkContainer1: React.FC<Props> = ({ children }) => (
 
 export const WorkLeft1: React.FC<Props> = ({ children }) => (
   <div
-    className={`${style.pagesBg} bg-opacity-100 saturate-100
+    className={`${style.pagesBackground} bg-opacity-100 saturate-100
     flex flex-col items-center justify-center h-[30vh] lg:h-[91vh]
     text-white text-4xl md:text-5xl font-semibold leading-10`}
   >
-    <motion.div variants={fadeInUp}>
-        {children}
-    </motion.div>
+    <motion.div variants={fadeInUp}>{children}</motion.div>
   </div>
 );
 
@@ -76,7 +76,10 @@ export const WorkRight1: React.FC<Props> = ({ children }) => (
     className="bg-white text-black h-[57vh] md:h-[62vh] lg:h-[91vh] flex flex-1 lg:items-center 
     text-center justify-center"
   >
-    <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
+    <motion.div
+      variants={fadeInDown}
+      className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0"
+    >
       {children}
     </motion.div>
   </div>
@@ -87,3 +90,25 @@ export const WorkAnimation1: React.FC<Props> = ({ children }) => (
     {children}
   </div>
 );
+
+export const StatusLayout = ({ props }) => {
+  return (
+    <>
+      <MainContainer1>
+        <WorkContainer1>
+          <WorkLeft1>
+            <WorkLink href={`${props.WorkLink}`}>{props.Name}</WorkLink>{" "}
+            Integration
+          </WorkLeft1>
+          <WorkRight1>
+            <WorkAnimation1>
+              <Animation />
+            </WorkAnimation1>
+            <p>Status: {props.Description}</p>
+            {props.Date}
+          </WorkRight1>
+        </WorkContainer1>
+      </MainContainer1>
+    </>
+  );
+};

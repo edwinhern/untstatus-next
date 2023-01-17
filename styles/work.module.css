@@ -1,18 +1,13 @@
-.work {
-    background-repeat: no-repeat;
-    background-image: url("../public/assets/background/particles.svg");
-}
-
 /* For mobile viewing  */
 @media screen and (min-width: 100px) and (max-width: 480px) {
-    .work {
-        background-image: none;
-    }
+  .work {
+    background-image: none;
+  }
 }
 
 /* For Bigger devices */
 @media screen and (min-width: 480px) and (max-width: 768px) {
-    .work {
-        background-image: url("../public/assets/background/particles.svg");
-    }
+  .work {
+    background-image: url("../public/assets/background/particles.svg");
+  }
 }

@@ -1,5 +1,5 @@
-import React, { useContext, useRef } from "react";
-import s from "../styles/aboutus.module.css";
+import { useContext, useRef } from "react";
+import style from "../styles/About.module.css";
 import { ScrollContext } from "../utils/scroll-observer";
 
 const opacityForBlock = (sectionProgress: number, blockNo: number) => {
@@ -8,7 +8,7 @@ const opacityForBlock = (sectionProgress: number, blockNo: number) => {
   return 0.2;
 };
 
-const AboutUs: React.FC = () => {
+export const About: React.FC = () => {
   const { scrollY } = useContext(ScrollContext);
   const refContainer = useRef<HTMLDivElement>(null);
 
@@ -37,43 +37,51 @@ const AboutUs: React.FC = () => {
       >
         <p className="leading-snug mb-10 max-w-5xl mx-auto my-auto text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px]">
           <span
-            className={`${s.aboutText}`}
+            className={`${style.aboutText}`}
             style={{
               opacity: opacityForBlock(progress, 0),
             }}
           >
-            Here to keep you up to date,{" "}
-            <strong className="text-blue-500">faster</strong>.
+            <strong className="text-blue-500">Stay ahead of the curve</strong>{" "}
+            with our{" "}
+            <strong className="text-green-500">cutting-edge project</strong>.
           </span>
           <span
-            className={`${s.aboutText} inline-block leading-snug after:content-['_']`}
+            className={`${style.aboutText} inline-block leading-snug after:content-['_']`}
             style={{
               opacity: opacityForBlock(progress, 1),
             }}
           >
-            This project has been on my mind for some time.&nbsp;This was
-            inspired by the{" "}
-            <strong className="text-pink-500">AWS outage</strong> that happened
-            during finals week in term:{" "}
-            <strong className="text-purple-500">Fall 2021</strong> at{" "}
-            <strong className="text-green-500">UNT</strong>.
+            We have been working diligently to bring this to fruition, fueled by
+            the determination to prevent another incident like the{" "}
+            <strong className="text-pink-500">
+              Fall 2021 AWS outage at UNT
+            </strong>{" "}
+            during finals week. Our goal is to provide a{" "}
+            <strong className="text-green-500">
+              useful and reliable resource
+            </strong>{" "}
+            for{" "}
+            <strong className="text-blue-500">
+              UNT Faculty, Staff, and Students
+            </strong>
+            .
           </span>
           <span
-            className={`${s.aboutText} leading-snug inline-block`}
+            className={`${style.aboutText} leading-snug inline-block`}
             style={{
               opacity: opacityForBlock(progress, 2),
             }}
           >
-            Hopefully, it is useful for us{" "}
-            <strong className="">UNT Faculty</strong>,{" "}
-            <strong className="">Staff</strong>, and{" "}
-            <strong className="text-pink-500">Students </strong>
-            further down the road.
+            Join us in our <strong className="text-green-500">mission</strong>{" "}
+            to{" "}
+            <strong className="text-pink-500">
+              stay informed and prepared
+            </strong>{" "}
+            for the <strong className="text-purple-500">future</strong>.
           </span>
         </p>
       </div>
     </section>
   );
 };
-
-export default AboutUs;

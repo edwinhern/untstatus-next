@@ -1,107 +1,32 @@
-import React from "react";
-import Navbar from "../components/navbar";
-import {WorkLink} from "../components/work";
-import {motion} from 'framer-motion';
-import Head from "next/head";
-import dateFormat from "dateformat";
-import customCss from "../lib/cssFunction";
-import style from "../styles/pages.module.css"
+import { StatusFormatter, DateFormatter } from "../components";
+import { StatusLayout } from "../components/Status.Component";
 
-const easing = [.6, -.05, .01, .99]
-const fadeInUp = {
-  inital: {
-    y:100,
-    opacity: 0,
-  },
-  animate: {
-    y:0,
-    opacity: 1,
-    transition: {
-      duration: .6,
-      ease: easing,
-    }
-  }
-}
-
-const fadeInDown = {
-  inital: {
-    y:-100,
-    opacity: 0,
-  },
-  animate: {
-    y:0,
-    opacity: 1,
-    transition: {
-      duration: .6,
-      ease: easing,
-    }
-  }
-}
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-}
-
-const turnitinPage = (props) => {   
-  return (
-    <>
-      <Navbar />
-      <Head>
-        <title>Turnitin Status</title>
-        <meta name="description" content="Made for the people, UNT." />
-        <link rel="icon" href="/assets/logos/logo-100.svg" />
-      </Head>
-      {/* Work Container */}
-      <motion.div 
-      animate="animate" initial="inital"
-      exit={{ opacity: 0 }} variants={stagger}
-      className="grid grid-cols-1 lg:grid-cols-2 w-full min-h-screen top-0 sticky">
-        {/* Work Left */}
-        <motion.div variants={fadeInUp} className={`${style.pagesBg} bg-opacity-100 saturate-100
-        flex flex-col items-center justify-center h-[30vh] lg:h-auto
-        text-white text-4xl md:text-5xl font-semibold leading-10`}
-        >
-           <span>
-            <WorkLink  href="https://turnitin.statuspage.io/">
-            Turnitin
-            </WorkLink>{" "}
-            Integration
-          </span>
-        </motion.div> {/* Work Left */}
-        {/* Work Right */}
-        <div className="bg-white h-[70vh] lg:min-h-screen flex flex-1 lg:items-center text-center justify-center ">
-          <motion.div variants={fadeInDown} className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0">
-            <h2>Status bar under Maintenance</h2>
-            <p>Status: {props.turnitinDescription}</p>
-            {dateFormat(props.turnitinStatus, "dddd, mmmm dS, yyyy")}
-          </motion.div>
-        </div> {/* Work Right */}
-      </motion.div> {/* Work Container */}
-    </>
-  );
+const TurnitinPage = (props) => {
+  return <StatusLayout props={props} />;
 };
 
-// Use when calling hhtp request inside a page Ex: canvas.tsx
-export async function getServerSideProps({req, res}) {
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=10, stale-while-revalidate=59'
-  )
-  try { 
-    let res = await fetch(`https://status.instructure.com/api/v2/status.json`);
-    let data = await res.json();
-    return { 
-      props:{
-        turnitinStatus: data["page"].updated_at,
-        turnitinIndicator: customCss(data.status["indicator"]),
-        turnitinDescription: data.status["description"],
-      }
-     };
-  } catch(err) { console.error(err) }  
-};
+export async function getServerSideProps() {
+  try {
+    const res = await fetch(
+      `https://turnitin.statuspage.io/api/v2/status.json`
+    );
+    const data = await res.json();
+    const Date = DateFormatter(data.page.updated_at);
+    const StatusColor = StatusFormatter(data.status.indicator);
+    const Description = data.status.description;
 
-export default turnitinPage;
+    return {
+      props: {
+        Name: "Turnitin",
+        WorkLink: "https://turnitin.statuspage.io/",
+        Date,
+        StatusColor,
+        Description,
+      },
+    };
+  } catch (err) {
+    console.error("Error Fetching API Data:", err);
+  }
+}
+
+export default TurnitinPage;
