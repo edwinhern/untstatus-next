@@ -1,4 +1,6 @@
 .mastHeadBackground {
   background-repeat: no-repeat;
   background-image: url("../public/assets/background/home.svg");
+  background-size: cover;
+  background-position: center;
 }

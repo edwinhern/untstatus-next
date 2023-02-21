@@ -60,7 +60,7 @@ export const Masthead = () => {
         loop
         muted
         playsInline
-        className={`${style.mastHeadBackground} absolute w-screen min-h-[90vh] md:h-screen object-cover saturate-100`}
+        className={`${style.mastHeadBackground} absolute w-screen min-h-[90vh] md:h-screen saturate-100`}
       />
 
       <motion.div
@@ -68,7 +68,7 @@ export const Masthead = () => {
         className="p-12 font-bold z-10 text-white text-center flex-1 flex items-center justify-center flex-col"
       >
         <h1 className="mb-6 uppercase text-4xl xl:text-5xl">
-          unt<a className="font-thin">Status</a>
+          unt<a className="font-light">Status</a>
         </h1>
         <h2 className="mb-2 text-2xl xl:text-3xl tracking-tight">
           <span>Web Development,</span> <span>done right.</span>

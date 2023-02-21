@@ -8,7 +8,7 @@ import { Source_Sans_Pro } from "@next/font/google";
 
 const sourceSansPro = Source_Sans_Pro({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["200", "400", "700"],
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

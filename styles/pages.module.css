@@ -1,4 +1,10 @@
 .pagesBackground {
   background-repeat: no-repeat;
   background-image: url("../public/assets/background/home1.svg");
+  background-size: cover;
+  background-position: center;
+}
+
+.workRight {
+  height: calc(100vh - 30vh);
 }

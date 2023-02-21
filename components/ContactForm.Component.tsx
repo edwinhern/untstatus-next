@@ -19,25 +19,10 @@ export const ContactForm: React.FC = () => {
 
   return (
     <div className="bg-black text-white flex flex-col justify-center pt-0 pb-[5px] min-h-[70vh]">
-      <div className="pb-10 container mx-auto px-10 text-center items-center justify-center mt-[40px]">
-        <div className="mt-[10px] grid gap-6 lg:gap-20 -mb-[25px]">
-          <div>
-            <div className="container max-w-screen-lg mx-auto">
-              <img
-                alt="Picture of Edwin Hernandez"
-                className="mx-auto object-cover mb-2 w-44 h-44 rounded-full"
-                src="/assets/social-media/me.JPG"
-              />
-            </div>
-            <div className="text-2xl xl:text-3xl">Edwin Hernandez</div>
-            <h2 className="mt-2">Honcho</h2>
-          </div>
-        </div>
-      </div>
       <div className="flex-1 flex flex-col justify-center text-center items-center pt-5 lg:pt-5">
         {!form.isSubmitted && (
           <>
-            <h2 className="text-4xl font-bold -mt-5 -mb-[20px]">Contact Me</h2>
+            <h2 className="text-4xl font-bold -mt-5 -mb-[20px]">Contact Us</h2>
             <form
               onSubmit={handleSubmit}
               className="flex flex-col gap-4 mt-16 px-10 lg:mt-20 min-w-full lg:min-w-[500px]"

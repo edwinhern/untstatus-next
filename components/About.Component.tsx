@@ -57,7 +57,7 @@ export const About: React.FC = () => {
             <strong className="text-pink-500">
               Fall 2021 AWS outage at UNT
             </strong>{" "}
-            during finals week. Our goal is to provide a{" "}
+            during finals week. <br></br> Our goal is to provide a{" "}
             <strong className="text-green-500">
               useful and reliable resource
             </strong>{" "}

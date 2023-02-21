@@ -56,16 +56,13 @@ export const MainContainer1: React.FC<Props> = ({ children }) => (
 );
 
 export const WorkContainer1: React.FC<Props> = ({ children }) => (
-  <div className="grid grid-cols-1 lg:grid-cols-2 w-full top-0 sticky">
-    {children}
-  </div>
+  <div className="grid grid-cols-1 lg:grid-cols-2">{children}</div>
 );
 
 export const WorkLeft1: React.FC<Props> = ({ children }) => (
   <div
     className={`${style.pagesBackground} bg-opacity-100 saturate-100
-    flex flex-col items-center justify-center h-[30vh] lg:h-[91vh]
-    text-white text-4xl md:text-5xl font-semibold leading-10`}
+    flex flex-col items-center justify-center h-[30vh] lg:min-h-screen text-white text-4xl md:text-5xl font-semibold leading-10`}
   >
     <motion.div variants={fadeInUp}>{children}</motion.div>
   </div>
@@ -73,8 +70,7 @@ export const WorkLeft1: React.FC<Props> = ({ children }) => (
 
 export const WorkRight1: React.FC<Props> = ({ children }) => (
   <div
-    className="bg-white text-black h-[57vh] md:h-[62vh] lg:h-[91vh] flex flex-1 lg:items-center 
-    text-center justify-center"
+    className={`bg-white text-black lg:min-h-screen flex flex-1 lg:items-center text-center justify-center`}
   >
     <motion.div
       variants={fadeInDown}
