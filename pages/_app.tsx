@@ -1,10 +1,11 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import ScrollObserver from "../utils/scroll-observer";
-import SizeObserver from "../utils/size-observer";
-import { Navbar } from "../components/";
-import Head from "next/head";
+import ScrollObserver from "../src/utils/scroll-observer";
+import { Navbar } from "../components/Layout/Navbar.Component";
+import SizeObserver from "../src/utils/size-observer";
 import { Source_Sans_Pro } from "@next/font/google";
+import { Analytics } from "@vercel/analytics/react";
+import type { AppProps } from "next/app";
+import "../styles/globals.css";
+import Head from "next/head";
 
 const sourceSansPro = Source_Sans_Pro({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ScrollObserver>
           <Navbar />
           <Component {...pageProps} />
+          <Analytics />
         </ScrollObserver>
       </SizeObserver>
     </main>

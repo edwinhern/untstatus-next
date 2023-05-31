@@ -1,32 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TabsMap } from "../../src/utils/TabsMap";
 
-const tabs = [
-  {
-    name: "Canvas",
-    link: "/canvas",
-  },
-  {
-    name: "Lockdown",
-    link: "/lockdown",
-  },
-  {
-    name: "Turnitin",
-    link: "/turnitin",
-  },
-  {
-    name: "Zoom",
-    link: "/zoom",
-  },
-  {
-    name: "Donate",
-    link: "https://buy.stripe.com/14k5mlcrTcbC7Li3cc",
-  },
-];
+const tabs = Object.keys(TabsMap).map((key) => ({
+  name: key,
+  link: key === "Donate" ? TabsMap[key] : `/${key.toLowerCase()}`,
+}));
 
 export const Navbar: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center top-0">
+    <div
+      id={"navbar"}
+      className="flex flex-col items-center justify-center top-0"
+    >
       <div className="relative flex-grow-0 pt-0">
         <div className="container mx-auto p-0 pb-5 md:pb-0 text-white">
           <div className="md:flex md:flex-row md:justify-between text-center text-sm sm:text-base">

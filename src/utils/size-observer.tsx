@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-interface ScrolValue {
+interface ScrollValue {
   innerWidth: number;
 }
 
 interface Props {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
-export const SizeContext = React.createContext<ScrolValue>({
+export const SizeContext = React.createContext<ScrollValue>({
   innerWidth: 0,
 });
 

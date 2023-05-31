@@ -1,30 +1,12 @@
-import { StatusFormatter, DateFormatter } from "../components";
-import { StatusLayout } from "../components/Status.Component";
+import StatusLayoutWrapper from "../components/Status/StatusLayoutWrapper";
 
-const RespondusPage = (props) => {
-  return <StatusLayout props={props} />;
+const RespondusPage = () => {
+  return (
+    <StatusLayoutWrapper
+      name={"Lockdown"}
+      url={"https://status.respondus.com/api/v2/status.json"}
+    />
+  );
 };
-
-export async function getServerSideProps() {
-  try {
-    const res = await fetch(`https://status.respondus.com/api/v2/status.json`);
-    const data = await res.json();
-    const Date = DateFormatter(data.page.updated_at);
-    const StatusColor = StatusFormatter(data.status.indicator);
-    const Description = data.status.description;
-
-    return {
-      props: {
-        Name: "Lockdown",
-        WorkLink: "https://status.respondus.com/",
-        Date,
-        StatusColor,
-        Description,
-      },
-    };
-  } catch (err) {
-    console.error("Error Fetching API Data:", err);
-  }
-}
 
 export default RespondusPage;

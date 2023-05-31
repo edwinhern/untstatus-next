@@ -1,43 +1,25 @@
-import { useRef, useContext, useState, useCallback } from "react";
-import { ScrollContext } from "../utils/scroll-observer";
+import {
+  stagger,
+  fadeInUp,
+} from "../../src/utils/framer-motion/MastheadConfig";
+import { useRef, useContext, useState, useCallback, useMemo } from "react";
+import { ScrollContext } from "../../src/utils/scroll-observer";
+import style from "../../styles/Masthead.module.css";
 import { motion } from "framer-motion";
-import style from "../styles/Masthead.module.css";
-const easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeInUp = {
-  inital: {
-    y: 60,
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: easing,
-    },
-  },
-};
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
 
 export const Masthead = () => {
   const [imageLoaded, setImageLoaded] = useState(true);
   const refContainer = useRef<HTMLDivElement>(null);
   const { scrollY } = useContext(ScrollContext);
 
-  let progress = 0;
-
-  const { current: elContainer } = refContainer;
-  if (elContainer) {
-    progress = Math.min(1, scrollY / elContainer.clientHeight);
-  }
+  const progress = useMemo(() => {
+    let progressValue = 0;
+    const { current: elContainer } = refContainer;
+    if (elContainer) {
+      progressValue = Math.min(1, scrollY / elContainer.clientHeight);
+    }
+    return progressValue;
+  }, [scrollY, refContainer]);
 
   const handleImageLoaded = useCallback(() => {
     setImageLoaded(true);
