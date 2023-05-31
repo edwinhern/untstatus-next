@@ -1,5 +1,5 @@
 import ScrollObserver from "../src/utils/scroll-observer";
-import { Navbar } from "../components/Navbar.Component";
+import { Navbar } from "../components/Layout/Navbar.Component";
 import SizeObserver from "../src/utils/size-observer";
 import { Source_Sans_Pro } from "@next/font/google";
 import { Analytics } from "@vercel/analytics/react";

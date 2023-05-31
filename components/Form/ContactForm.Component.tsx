@@ -1,26 +1,28 @@
 import { useState } from "react";
 
 export const ContactForm: React.FC = () => {
-  const [form, setForm] = useState({
-    name: null,
-    email: null,
-    message: null,
-    isSubmitted: false,
-  });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fetch("/api/contact", {
-      method: "post",
-      body: JSON.stringify(form),
-    });
-    setForm({ ...form, isSubmitted: true });
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) throw new Error("Something went wrong!");
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <div className="bg-black text-white flex flex-col justify-center pt-0 pb-[5px] min-h-[70vh]">
+    <div className="bg-black text-white flex flex-col justify-center pt-0 pb-[5px] min-h-[90vh]">
       <div className="flex-1 flex flex-col justify-center text-center items-center pt-5 lg:pt-5">
-        {!form.isSubmitted && (
+        {!isSubmitted && (
           <>
             <h2 className="text-4xl font-bold -mt-5 -mb-[20px]">Contact Us</h2>
             <form
@@ -64,7 +66,7 @@ export const ContactForm: React.FC = () => {
             </form>
           </>
         )}
-        {form.isSubmitted && (
+        {isSubmitted && (
           <div className="text-white text-xl sm:text-2xl md:text-4xl text-center">
             Your message has been successfully sent.
             <p>I'll get back to you soon!</p>

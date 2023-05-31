@@ -1,7 +1,10 @@
-import { stagger, fadeInUp } from "../src/utils/framer-motion/MastheadConfig";
+import {
+  stagger,
+  fadeInUp,
+} from "../../src/utils/framer-motion/MastheadConfig";
 import { useRef, useContext, useState, useCallback, useMemo } from "react";
-import { ScrollContext } from "../src/utils/scroll-observer";
-import style from "../styles/Masthead.module.css";
+import { ScrollContext } from "../../src/utils/scroll-observer";
+import style from "../../styles/Masthead.module.css";
 import { motion } from "framer-motion";
 
 export const Masthead = () => {

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { TabsMap } from "../src/utils/TabsMap";
+import { TabsMap } from "../../src/utils/TabsMap";
 
 const tabs = Object.keys(TabsMap).map((key) => ({
   name: key,
