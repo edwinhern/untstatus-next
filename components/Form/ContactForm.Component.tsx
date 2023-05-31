@@ -1,18 +1,26 @@
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 export const ContactForm: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+    reset,
+  } = useForm();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
-        body: JSON.stringify(form),
+        body: JSON.stringify(data),
       });
-      if (!response.ok) throw new Error("Something went wrong!");
 
+      if (!response.ok) throw new Error(response.statusText);
+
+      reset(); // Resets form fields
       setIsSubmitted(true);
     } catch (error) {
       console.log(error);
@@ -26,35 +34,37 @@ export const ContactForm: React.FC = () => {
           <>
             <h2 className="text-4xl font-bold -mt-5 -mb-[20px]">Contact Us</h2>
             <form
-              onSubmit={handleSubmit}
+              onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-4 mt-16 px-10 lg:mt-20 min-w-full lg:min-w-[500px]"
             >
               <input
+                {...register("name", {
+                  required: true,
+                  maxLength: 128,
+                })}
                 className="bg-black text-white outline-none border-2 border-white rounded-3xl px-8 py-2"
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                id="name"
                 type="text"
-                required
-                maxLength={128}
                 placeholder="Your Name"
-              ></input>
+              />
+              {errors.name && <p className="text-red-600">Name is required</p>}
+
               <input
+                {...register("email", { required: true, maxLength: 128 })}
                 className="bg-black text-white outline-none border-2 border-white rounded-3xl px-8 py-2"
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                id="email"
                 type="email"
-                required
-                maxLength={128}
                 placeholder="Your E-mail"
-              ></input>
+              />
+              {errors.email && (
+                <p className="text-red-600">Email is required</p>
+              )}
               <textarea
+                {...register("message", { required: true, maxLength: 1048576 })}
                 className="bg-black text-white outline-none border-2 border-white rounded-3xl px-8 py-6 min-h-[16em]"
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                id="message"
-                required
-                maxLength={1048576}
                 placeholder="Additional information"
               ></textarea>
+              {errors.message && (
+                <p className="text-red-600">Information is required</p>
+              )}
               <div className="text-center mt-10">
                 <button
                   type="submit"

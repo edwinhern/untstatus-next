@@ -72,7 +72,10 @@ export const About: React.FC = () => {
       >
         <p className="leading-snug mb-10 max-w-5xl mx-auto my-auto text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px]">
           {textBlocks.map((block) => (
-            <TextBlock opacity={calculateOpacity(progress, block.blockNumber)}>
+            <TextBlock
+              key={block.blockNumber}
+              opacity={calculateOpacity(progress, block.blockNumber)}
+            >
               {block.text}
             </TextBlock>
           ))}
