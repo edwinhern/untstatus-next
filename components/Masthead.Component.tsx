@@ -1,5 +1,5 @@
 import { stagger, fadeInUp } from "../src/utils/framer-motion/MastheadConfig";
-import { useRef, useContext, useState, useCallback } from "react";
+import { useRef, useContext, useState, useCallback, useMemo } from "react";
 import { ScrollContext } from "../src/utils/scroll-observer";
 import style from "../styles/Masthead.module.css";
 import { motion } from "framer-motion";
@@ -9,12 +9,14 @@ export const Masthead = () => {
   const refContainer = useRef<HTMLDivElement>(null);
   const { scrollY } = useContext(ScrollContext);
 
-  let progress = 0;
-
-  const { current: elContainer } = refContainer;
-  if (elContainer) {
-    progress = Math.min(1, scrollY / elContainer.clientHeight);
-  }
+  const progress = useMemo(() => {
+    let progressValue = 0;
+    const { current: elContainer } = refContainer;
+    if (elContainer) {
+      progressValue = Math.min(1, scrollY / elContainer.clientHeight);
+    }
+    return progressValue;
+  }, [scrollY, refContainer]);
 
   const handleImageLoaded = useCallback(() => {
     setImageLoaded(true);
