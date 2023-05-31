@@ -1,5 +1,5 @@
 import { useRef, useContext, useState, useCallback } from "react";
-import { ScrollContext } from "../utils/scroll-observer";
+import { ScrollContext } from "../src/utils/scroll-observer";
 import { motion } from "framer-motion";
 import style from "../styles/Masthead.module.css";
 const easing = [0.6, -0.05, 0.01, 0.99];
