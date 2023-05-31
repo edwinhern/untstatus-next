@@ -2,9 +2,10 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import ScrollObserver from "../src/utils/scroll-observer";
 import SizeObserver from "../src/utils/size-observer";
-import { Navbar } from "../components/";
+
 import Head from "next/head";
 import { Source_Sans_Pro } from "@next/font/google";
+import { Navbar } from "../components/Navbar.Component";
 
 const sourceSansPro = Source_Sans_Pro({
   subsets: ["latin"],

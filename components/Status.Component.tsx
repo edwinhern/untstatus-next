@@ -1,5 +1,5 @@
-import { WorkLink } from "../components/Work.Component";
-import Animation from "../components/Animation.Component";
+import { WorkLink } from "./Work.Component";
+import Animation from "./Animation.Component";
 import { ApiDataState } from "../src/types/APIDataState";
 import style from "../styles/pages.module.css";
 import { motion } from "framer-motion";
