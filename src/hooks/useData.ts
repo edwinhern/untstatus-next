@@ -4,7 +4,7 @@ import { APIResponse } from "../types/APIResponse";
 import { ApiDataState } from "../types/APIDataState";
 import { DateFormatter } from "../utils/DateFormatter";
 import { StatusFormatter } from "../utils/StatusFormatter";
-import { WorkLinkMap } from "../utils/WorkLinkMap";
+import { TabsMap } from "../utils/TabsMap";
 
 export const useData = (name: string, url: string): ApiDataState => {
   const [data, setData] = useState<StatusState | null>(null);
@@ -24,7 +24,7 @@ export const useData = (name: string, url: string): ApiDataState => {
 
         setData({
           name,
-          workLink: WorkLinkMap[name],
+          workLink: TabsMap[name],
           date,
           description,
           statusColor,
