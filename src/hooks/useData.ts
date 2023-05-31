@@ -3,7 +3,7 @@ import { StatusState } from "../types/StatusState";
 import { APIResponse } from "../types/APIResponse";
 import { ApiDataState } from "../types/APIDataState";
 import { DateFormatter } from "../utils/DateFormatter";
-import { StatusFormatter } from "../utils/StatusFormatter";
+import { StatusColors } from "../utils/StatusFormatter";
 import { TabsMap } from "../utils/TabsMap";
 
 export const useData = (name: string, url: string): ApiDataState => {
@@ -20,7 +20,7 @@ export const useData = (name: string, url: string): ApiDataState => {
 
         const date = DateFormatter(json.page.updated_at);
         const { indicator, description } = json.status;
-        const statusColor = StatusFormatter(indicator);
+        const statusColor = StatusColors[indicator] || "purple";
 
         setData({
           name,

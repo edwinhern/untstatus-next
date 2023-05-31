@@ -1,39 +1,14 @@
 import style from "../styles/status.module.css";
 
-const Animation = (params) => {
+export const StatusAnimation = ({ statusColor }) => {
   return (
-    <>
-      <div className={`${style.ldsDefault}`}>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <div className={style.spinnerContainer}>
+      <div className={style.spinner}>
+        <div style={{ background: statusColor }}></div>
+        <div style={{ background: statusColor }}></div>
+        <div style={{ background: statusColor }}></div>
+        <div style={{ background: statusColor }}></div>
       </div>
-    </>
+    </div>
   );
 };
-
-const Animation2 = () => {
-  return (
-    <>
-      <div className={`${style.loadingiospinnerbars84j3pe45fvy}`}>
-        <div className={`${style.ldiodn2ktzqoirp}`}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default Animation2;

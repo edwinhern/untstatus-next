@@ -1,5 +1,5 @@
 import { WorkLink } from "./Work.Component";
-import Animation from "./Animation.Component";
+import { StatusAnimation } from "./Animation.Component";
 import { ApiDataState } from "../src/types/APIDataState";
 import style from "../styles/pages.module.css";
 import { motion } from "framer-motion";
@@ -68,7 +68,7 @@ export const StatusLayout = (props: ApiDataState) => {
           </WorkLeft1>
           <WorkRight1>
             <WorkAnimation1>
-              <Animation />
+              <StatusAnimation statusColor={statusColor} />
             </WorkAnimation1>
             <p>Status: {description}</p>
             {date}
