@@ -1,15 +1,15 @@
-import { useResponsiveHeight } from "../src/hooks/useResponsiveHeight";
-import { ApiDataState } from "../src/types/APIDataState";
-import { StatusAnimation } from "./Animation.Component";
-import { BoxProps } from "../src/types/BoxProps";
+import { useResponsiveHeight } from "../../src/hooks/useResponsiveHeight";
+import { ApiDataState } from "../../src/types/APIDataState";
+import { StatusAnimation } from "../Animation/StatusAnimation.Component";
+import { BoxProps } from "../../src/types/BoxProps";
 import { WorkLink } from "./WorkLink.Component";
-import style from "../styles/pages.module.css";
+import style from "../../styles/pages.module.css";
 import { motion } from "framer-motion";
 import {
   stagger,
   fadeInUp,
   fadeInDown,
-} from "../src/utils/framer-motion/StatusConfig";
+} from "../../src/utils/framer-motion/StatusConfig";
 
 const Box: React.FC<BoxProps> = ({
   id,

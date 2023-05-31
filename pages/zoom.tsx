@@ -1,6 +1,6 @@
-import StatusLayoutWrapper from "../components/StatusLayoutWrapper";
+import StatusLayoutWrapper from "../components/Status/StatusLayoutWrapper";
 
-const ZoomPage = (props) => {
+const ZoomPage = () => {
   return (
     <StatusLayoutWrapper
       name={"Zoom"}

@@ -1,4 +1,4 @@
-import style from "../styles/status.module.css";
+import style from "../../styles/status.module.css";
 
 export const StatusAnimation = ({ statusColor }) => {
   return (

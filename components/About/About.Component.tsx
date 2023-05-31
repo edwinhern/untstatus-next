@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import TextBlock from "./About/TextBlock.Component";
-import { useScrollProgress } from "../src/hooks/useScrollProgress";
+import TextBlock from "./TextBlock.Component";
+import { useScrollProgress } from "../../src/hooks/useScrollProgress";
 
 const calculateOpacity = (progress, blockNo) => {
   const calculatedProgress = progress - blockNo;

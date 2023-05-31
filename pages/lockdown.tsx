@@ -1,4 +1,4 @@
-import StatusLayoutWrapper from "../components/StatusLayoutWrapper";
+import StatusLayoutWrapper from "../components/Status/StatusLayoutWrapper";
 
 const RespondusPage = () => {
   return (

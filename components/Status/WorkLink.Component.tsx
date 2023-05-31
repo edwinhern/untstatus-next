@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LinkProps } from "../src/types/LinkProps";
+import { LinkProps } from "../../src/types/LinkProps";
 
 export const WorkLink: React.FC<LinkProps> = ({ href, children }) => (
   <Link href={href}>
