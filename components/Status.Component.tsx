@@ -1,6 +1,8 @@
-import { WorkLink } from "./Work.Component";
-import { StatusAnimation } from "./Animation.Component";
+import { useResponsiveHeight } from "../src/hooks/useResponsiveHeight";
 import { ApiDataState } from "../src/types/APIDataState";
+import { StatusAnimation } from "./Animation.Component";
+import { BoxProps } from "../src/types/BoxProps";
+import { WorkLink } from "./WorkLink.Component";
 import style from "../styles/pages.module.css";
 import { motion } from "framer-motion";
 import {
@@ -8,18 +10,6 @@ import {
   fadeInUp,
   fadeInDown,
 } from "../src/utils/framer-motion/StatusConfig";
-import { useEffect, useState } from "react";
-
-interface BoxProps {
-  id?: string;
-  className?: string;
-  animate?: "animate" | "initial" | undefined;
-  initial?: "initial" | "animate" | undefined;
-  exit?: "exit" | undefined;
-  variants?: any;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-}
 
 const Box: React.FC<BoxProps> = ({
   id,
@@ -44,27 +34,9 @@ const Box: React.FC<BoxProps> = ({
   </motion.div>
 );
 
-export const StatusLayout = (props: ApiDataState) => {
+export const StatusLayout = (props: ApiDataState): JSX.Element => {
   const { date, description, name, statusColor, workLink } = props.data;
-
-  const [height, setHeight] = useState("50vh");
-
-  useEffect(() => {
-    const handleResize = () => {
-      const navbar = document.getElementById("navbar");
-      const navbarHeight = navbar ? navbar.offsetHeight : 0;
-      const vh = Math.max(
-        document.documentElement.clientHeight || 0,
-        window.innerHeight || 0
-      ); // Get viewport height
-
-      setHeight(`${vh - navbarHeight}px`);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const height = useResponsiveHeight();
 
   return (
     <>
