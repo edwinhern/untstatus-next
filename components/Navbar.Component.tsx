@@ -9,7 +9,10 @@ const tabs = Object.keys(TabsMap).map((key) => ({
 
 export const Navbar: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center top-0">
+    <div
+      id={"navbar"}
+      className="flex flex-col items-center justify-center top-0"
+    >
       <div className="relative flex-grow-0 pt-0">
         <div className="container mx-auto p-0 pb-5 md:pb-0 text-white">
           <div className="md:flex md:flex-row md:justify-between text-center text-sm sm:text-base">

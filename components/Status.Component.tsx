@@ -8,73 +8,107 @@ import {
   fadeInUp,
   fadeInDown,
 } from "../src/utils/framer-motion/StatusConfig";
+import { useEffect, useState } from "react";
 
-interface Props {
+interface BoxProps {
+  id?: string;
+  className?: string;
+  animate?: "animate" | "initial" | undefined;
+  initial?: "initial" | "animate" | undefined;
+  exit?: "exit" | undefined;
+  variants?: any;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
-export const MainContainer1: React.FC<Props> = ({ children }) => (
+const Box: React.FC<BoxProps> = ({
+  id,
+  className = "",
+  animate,
+  initial,
+  exit,
+  variants,
+  children,
+  style,
+}) => (
   <motion.div
-    variants={stagger}
-    animate="animate"
-    initial="inital"
-    exit={{ opacity: 0 }}
+    id={id}
+    className={className}
+    variants={variants}
+    animate={animate}
+    initial={initial}
+    exit={exit}
+    style={style}
   >
     {children}
   </motion.div>
 );
 
-export const WorkContainer1: React.FC<Props> = ({ children }) => (
-  <div className="grid grid-cols-1 lg:grid-cols-2">{children}</div>
-);
-
-export const WorkLeft1: React.FC<Props> = ({ children }) => (
-  <div
-    className={`${style.pagesBackground} bg-opacity-100 saturate-100
-    flex flex-col items-center justify-center h-[30vh] lg:min-h-screen text-white text-4xl md:text-5xl font-semibold leading-10`}
-  >
-    <motion.div variants={fadeInUp}>{children}</motion.div>
-  </div>
-);
-
-export const WorkRight1: React.FC<Props> = ({ children }) => (
-  <div
-    className={`bg-white text-black lg:min-h-screen flex flex-1 lg:items-center text-center justify-center`}
-  >
-    <motion.div
-      variants={fadeInDown}
-      className="text-2xl md:text-3xl w-full max-w-md pt-10 lg:pt-0 px-0 md:px-0"
-    >
-      {children}
-    </motion.div>
-  </div>
-);
-
-export const WorkAnimation1: React.FC<Props> = ({ children }) => (
-  <div className="flex flex-1 justify-center mb-[60px] h-[100px]">
-    {children}
-  </div>
-);
-
 export const StatusLayout = (props: ApiDataState) => {
   const { date, description, name, statusColor, workLink } = props.data;
 
+  const [height, setHeight] = useState("50vh");
+
+  useEffect(() => {
+    const handleResize = () => {
+      const navbar = document.getElementById("navbar");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+      const vh = Math.max(
+        document.documentElement.clientHeight || 0,
+        window.innerHeight || 0
+      ); // Get viewport height
+
+      setHeight(`${vh - navbarHeight}px`);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <>
-      <MainContainer1>
-        <WorkContainer1>
-          <WorkLeft1>
-            <WorkLink href={`${workLink}`}>{name}</WorkLink> Integration
-          </WorkLeft1>
-          <WorkRight1>
-            <WorkAnimation1>
-              <StatusAnimation statusColor={statusColor} />
-            </WorkAnimation1>
-            <p>Status: {description}</p>
-            {date}
-          </WorkRight1>
-        </WorkContainer1>
-      </MainContainer1>
+      <Box
+        id={"MainContainer"}
+        variants={stagger}
+        animate={"animate"}
+        initial={"initial"}
+        exit={"exit"}
+      >
+        <Box
+          id={"WorkContainer"}
+          className="grid grid-cols-1 lg:grid-cols-2"
+          style={{ height }}
+        >
+          <Box
+            id={"WorkLeft"}
+            className={`${style.pagesBackground} bg-opacity-100 saturate-100
+            flex items-center justify-center text-white text-4xl md:text-5xl font-semibold leading-10`}
+            variants={fadeInUp}
+          >
+            <span>
+              <WorkLink href={`${workLink}`}>{name}</WorkLink> Integration
+            </span>
+          </Box>
+
+          <Box
+            id={"WorkRight"}
+            className={`bg-white text-black flex items-center justify-center text-center`}
+            variants={fadeInDown}
+          >
+            <Box id={"StatusContainer"} className="text-2xl md:text-3xl">
+              <Box
+                id={"StatusAnimation"}
+                className="flex justify-center mb-[60px] h-[100px]"
+              >
+                <StatusAnimation statusColor={statusColor} />
+              </Box>
+              <p>Status: {description}</p>
+              {date}
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 };
