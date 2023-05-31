@@ -2,6 +2,7 @@ import ScrollObserver from "../src/utils/scroll-observer";
 import { Navbar } from "../components/Navbar.Component";
 import SizeObserver from "../src/utils/size-observer";
 import { Source_Sans_Pro } from "@next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import type { AppProps } from "next/app";
 import "../styles/globals.css";
 import Head from "next/head";
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ScrollObserver>
           <Navbar />
           <Component {...pageProps} />
+          <Analytics />
         </ScrollObserver>
       </SizeObserver>
     </main>
