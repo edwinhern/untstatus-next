@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
 import { Masthead, About, ContactForm, Footer } from "../components";
+import type { NextPage } from "next";
+
 const Home: NextPage = () => {
   return (
     <>

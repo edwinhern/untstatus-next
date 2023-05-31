@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
 import { WorkLink } from "../components/Work.Component";
 import Animation from "../components/Animation.Component";
+import { ApiDataState } from "../src/types/APIDataState";
 import style from "../styles/pages.module.css";
+import { motion } from "framer-motion";
 
 const easing = [0.6, -0.05, 0.01, 0.99];
 const fadeInUp = {
@@ -87,21 +88,22 @@ export const WorkAnimation1: React.FC<Props> = ({ children }) => (
   </div>
 );
 
-export const StatusLayout = ({ props }) => {
+export const StatusLayout = (props: ApiDataState) => {
+  const { date, description, name, statusColor, workLink } = props.data;
+
   return (
     <>
       <MainContainer1>
         <WorkContainer1>
           <WorkLeft1>
-            <WorkLink href={`${props.WorkLink}`}>{props.Name}</WorkLink>{" "}
-            Integration
+            <WorkLink href={`${workLink}`}>{name}</WorkLink> Integration
           </WorkLeft1>
           <WorkRight1>
             <WorkAnimation1>
               <Animation />
             </WorkAnimation1>
-            <p>Status: {props.Description}</p>
-            {props.Date}
+            <p>Status: {description}</p>
+            {date}
           </WorkRight1>
         </WorkContainer1>
       </MainContainer1>
